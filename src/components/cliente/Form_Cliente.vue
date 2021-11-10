@@ -185,17 +185,25 @@ export default {
       this.dadosCliente.data_nasc = "";
       this.dadosCliente.obs = "";
     },
-    listarDadosTabela() {
+    async listarDadosTabela() {
       if (this.dadosAparecerSumirTabela === true) {
         this.dadosTabela = "color: black";
         this.$emit("listarDadosTabela", this.dadosTabela);
         this.dadosAparecerSumirTabela = false; // primeiro parametro o nome do evento, segundo o evento
+        try {
+          const data = await http.get("/cliente");
+          this.$emit("dadosCliente", data);
+          return data;
+        } catch (error) {
+          console.log(error);
+        }
       } else if (this.dadosAparecerSumirTabela !== true) {
         this.dadosTabela = "display: none;";
         this.$emit("listarDadosTabela", this.dadosTabela);
         this.dadosAparecerSumirTabela = true; // primeiro parametro o nome do evento, segundo o evento
       }
     },
+    async buscarDados() {},
   },
 };
 </script>

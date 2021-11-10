@@ -1,7 +1,13 @@
 <template>
   <div id="indexCliente">
-    <FormCliente @listarDadosTabela="listarDadosTabela = $event" />
-    <TabelaCliente :listarDadosTabela="listarDadosTabela" />
+    <FormCliente
+      @listarDadosTabela="listarDadosTabela = $event"
+      @dadosCliente="dadosCliente = $event"
+    />
+    <TabelaCliente
+      :listarDadosTabela="listarDadosTabela"
+      :dadosCliente="dadosCliente"
+    />
   </div>
 </template>
 
@@ -13,6 +19,7 @@ export default {
   data() {
     return {
       listarDadosTabela: "",
+      dadosCliente: {},
     };
   },
   components: {
