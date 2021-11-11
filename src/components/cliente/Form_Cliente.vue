@@ -1,7 +1,14 @@
 <template>
   <div id="formCliente">
     <div id="inputsCliente">
-      <h1 style="text-align: center; margin-bottom: 10px; margin-top: 70px">
+      <h1
+        style="
+          text-align: center;
+          margin-bottom: 10px;
+          margin-top: 70px;
+          color: white;
+        "
+      >
         Cadastro de Clientes
       </h1>
       <b-card bg-variant="light">
