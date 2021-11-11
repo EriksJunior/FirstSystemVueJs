@@ -224,5 +224,6 @@ export default {
 #inputsCliente {
   width: 100%;
   margin-left: 10px;
+  height: 100%;
 }
 </style>
