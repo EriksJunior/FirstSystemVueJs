@@ -47,6 +47,7 @@
                 icon="check-square-fill"
                 scale="2"
                 variant="success"
+                @click="editCliente(cliente.id)"
               ></b-icon>
             </td>
             <td style="text-align: center">
@@ -55,6 +56,7 @@
                 icon="x-square-fill"
                 scale="2"
                 variant="danger"
+                @click="deleteCliente(cliente.id)"
               ></b-icon>
             </td>
           </tr>
@@ -65,7 +67,7 @@
 </template>
 
 <script>
-// import { http } from "../../config/config";
+import { http } from "../../config/config";
 
 export default {
   props: {
@@ -84,22 +86,23 @@ export default {
       infoPesquisa: "display: none;",
       perPage: 3,
       currentPage: 1,
-      items: [],
     };
   },
-  methods: {},
-  computed: {
-    rows() {
-      return this.items.length;
+  methods: {
+    async editCliente(idCliente) {
+      const { data } = await http.get(`/cliente/${idCliente}`);
+      this.$emit("envInfoFromForm", data);
+      console.log(data);
+      return data;
+    },
+    async deleteCliente(idCliente) {
+      await http.delete(`/cliente/${idCliente}`);
     },
   },
   watch: {
     listarDadosTabela() {
       this.infoPesquisa = this.listarDadosTabela;
       this.testeDados = this.dadosCliente;
-    },
-    dadosCliente() {
-      console.log(this.dadosCliente);
     },
   },
 };

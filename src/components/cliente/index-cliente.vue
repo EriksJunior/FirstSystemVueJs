@@ -3,10 +3,12 @@
     <FormCliente
       @listarDadosTabela="listarDadosTabela = $event"
       @dadosCliente="dadosCliente = $event"
+      :envInfoFromForm="envInfoFromForm"
     />
     <TabelaCliente
       :listarDadosTabela="listarDadosTabela"
       :dadosCliente="dadosCliente"
+      @envInfoFromForm="envInfoFromForm = $event"
     />
   </div>
 </template>
@@ -20,6 +22,7 @@ export default {
     return {
       listarDadosTabela: "",
       dadosCliente: {},
+      envInfoFromForm: {},
     };
   },
   components: {

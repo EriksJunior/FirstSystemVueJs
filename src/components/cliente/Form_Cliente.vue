@@ -148,6 +148,11 @@
 import { http } from "../../config/config";
 
 export default {
+  props: {
+    envInfoFromForm: {
+      type: Object,
+    },
+  },
   data() {
     return {
       dadosAparecerSumirTabela: true,
@@ -210,7 +215,11 @@ export default {
         this.dadosAparecerSumirTabela = true; // primeiro parametro o nome do evento, segundo o evento
       }
     },
-    async buscarDados() {},
+  },
+  watch: {
+    envInfoFromForm() {
+      Object.assign(this.dadosCliente, this.envInfoFromForm);
+    },
   },
 };
 </script>
