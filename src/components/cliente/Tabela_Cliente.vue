@@ -116,7 +116,6 @@ export default {
 
 #tabelaDeClientes {
   width: 100%;
-  margin-top: 70px;
 }
 
 th {

@@ -5,7 +5,6 @@
         style="
           text-align: center;
           margin-bottom: 10px;
-          margin-top: 70px;
           color: white;
         "
       >

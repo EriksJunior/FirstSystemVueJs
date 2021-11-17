@@ -37,6 +37,5 @@ export default {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  background-image: linear-gradient(to top, #19303b, #011c2a);
 }
 </style>
