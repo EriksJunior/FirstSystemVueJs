@@ -13,7 +13,7 @@
       <b-card bg-variant="light">
         <form class="row">
           <b-form-input class="col-sm-1" hidden></b-form-input>
-          <div class="form-group col-md-12 col-sm-6 col-lg-7 col-xl-4">
+          <div class="form-group col-md-12 col-sm-6 col-lg-7 col-xl-6">
             <b-form-group label="Nome:">
               <b-form-input
                 class="col-sm-12"
@@ -22,13 +22,13 @@
             </b-form-group>
           </div>
 
-          <div class="form-group col-sm-6 col-md-12 col-lg-7 col-xl-2">
+          <div class="form-group col-sm-6 col-md-12 col-lg-7 col-xl-3">
             <b-form-group label="Marca:">
               <b-form-input placeholder="Marca"></b-form-input>
             </b-form-group>
           </div>
 
-          <div class="form-group col-sm-4 col-md-8 col-lg-5 col-xl-2">
+          <div class="form-group col-sm-4 col-md-8 col-lg-5 col-xl-3">
             <b-form-group label="Quantidade:">
               <b-form-input
                 class="col-sm-12"
@@ -37,7 +37,7 @@
             </b-form-group>
           </div>
 
-          <div class="form-group col-sm-2 col-md-4 col-lg-3 col-xl-2">
+          <div class="form-group col-sm-2 col-md-4 col-lg-3 col-xl-4">
             <b-form-group label="Preço de custo">
               <b-form-input
                 class="col-sm-12"
@@ -46,7 +46,7 @@
             </b-form-group>
           </div>
 
-          <div class="form-group col-sm-4 col-md-8 col-lg-6 col-xl-2">
+          <div class="form-group col-sm-4 col-md-8 col-lg-6 col-xl-4">
             <b-form-group label="Preço de venda:">
               <b-form-input
                 class="col-sm-12"
@@ -55,7 +55,7 @@
             </b-form-group>
           </div>
 
-          <div class="form-group col-sm-2 col-md-4 col-lg-2 col-xl-2">
+          <div class="form-group col-sm-2 col-md-4 col-lg-2 col-xl-4">
             <b-form-group label="Categoria:">
               <b-form-input
                 class="col-sm-9 col-lg-12"
@@ -64,7 +64,7 @@
             </b-form-group>
           </div>
 
-          <div class="form-group col-sm-4 col-md-12 col-lg-5 col-xl-2">
+          <div class="form-group col-sm-4 col-md-12 col-lg-5 col-xl-4">
             <b-form-group label="Data de cadastro:">
               <b-form-input type="date"></b-form-input>
             </b-form-group>
@@ -99,7 +99,7 @@
             </b-col>
 
             <b-col col md="12" lg="4" xl="3">
-              <b-button variant="info" class="col-md-12 mt-2" size="lg"
+              <b-button variant="info" class="col-md-12 mt-2 teste"  size="lg"
                 >Pesquisar</b-button
               >
             </b-col>

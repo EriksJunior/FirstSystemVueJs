@@ -2,7 +2,7 @@
   <div id="nav">
     <b-navbar type="dark" variant="dark">
       <b-navbar-nav>
-        <b-nav-item to="/">Home</b-nav-item>
+        <b-nav-item to="/home">Home</b-nav-item>
 
         <!-- Navbar dropdowns -->
         <b-nav-item-dropdown text="Cadastros" right>
