@@ -14,14 +14,13 @@
       <b-card bg-variant="light">
         <form class="row">
           <div class="form-group col-md-12 col-sm-6 col-lg-7 col-xl-7">
-            <b-form-group label="Nome:">
-              <b-form-input
-                v-model="this.idCliente"
-                class="col-sm-1"
-                disabled
-                hidden
-              ></b-form-input>
+            <b-form-input
+              v-model="dadosCliente.id"
+              class="col-sm-1"
+              hidden
+            ></b-form-input>
 
+            <b-form-group label="Nome:">
               <b-form-input
                 v-model="dadosCliente.nome"
                 class="col-sm-12"
@@ -158,8 +157,8 @@ export default {
       dadosAparecerSumirTabela: true,
       aparecerTabela: "",
       dadosTabela: "display: none;",
-      idCliente: null,
       dadosCliente: {
+        id: "",
         nome: "",
         cpfcnpj: "",
         endereco: "",
@@ -173,20 +172,34 @@ export default {
     };
   },
   methods: {
+    async editarCliente() {
+      const { data } = await http.put(
+        `/cliente/${this.dadosCliente.id}`,
+        this.dadosCliente
+      );
+      console.log(data);
+      alert("Dados do cliente atualizados com sucesso!");
+      return data;
+    },
     async salvarCliente() {
       try {
+        if (this.dadosCliente.id !== "") {
+          this.editarCliente();
+          this.limparDados();
+          return;
+        }
         const { data } = await http.post("/cliente", this.dadosCliente);
-        this.idCliente = data.id;
-        console.log(this.idCliente);
-        this.limparDados();
+        this.id = data.id;
+        console.log(this.id);
         alert("Cliente salvo");
+        this.limparDados();
         return data;
       } catch (error) {
         console.log(error);
       }
     },
     limparDados() {
-      this.idCliente = "";
+      this.id = "";
       this.dadosCliente.nome = "";
       this.dadosCliente.cpfcnpj = "";
       this.dadosCliente.endereco = "";

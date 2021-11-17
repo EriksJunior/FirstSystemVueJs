@@ -6,7 +6,8 @@
 
         <!-- Navbar dropdowns -->
         <b-nav-item-dropdown text="Cadastros" right>
-          <b-dropdown-item to="/cliente">CLiente</b-dropdown-item>
+          <b-dropdown-item to="/cliente">Cliente</b-dropdown-item>
+          <b-dropdown-item to="/produto">Produto</b-dropdown-item>
         </b-nav-item-dropdown>
 
         <!-- <b-nav-item-dropdown text="User" right>
