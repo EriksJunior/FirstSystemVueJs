@@ -1,7 +1,7 @@
 <template>
   <div id="indexProduto">
-    <FormProduto @buscarDadosProduto="intermediario = $event" />
-    <TabelaProduto :dadosProduto="intermediario"/>
+    <FormProduto @buscarDadosProduto="intermediarioFrmProduto = $event" :dadosProdutoTabela="intermediarioFrmTabela"/>
+    <TabelaProduto :dadosProduto="intermediarioFrmProduto" @dadosParaFormProduto="intermediarioFrmTabela = $event"/>
   </div>
 </template>
 
@@ -11,7 +11,8 @@ import TabelaProduto from "./Tabela_Produto.vue";
 export default {
   data() {
     return {
-      intermediario: [],
+      intermediarioFrmProduto: [],
+      intermediarioFrmTabela: {},
     };
   },
   components: {

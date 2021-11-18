@@ -183,7 +183,7 @@ export default {
         }
         const { data } = await http.post("/cliente", this.dadosCliente);
         this.id = data.id;
-        console.log(this.id);
+        console.log(data);
         alert("Cliente salvo");
         this.limparDados();
         return data;
@@ -192,7 +192,7 @@ export default {
       }
     },
     limparDados() {
-      this.id = "";
+      this.dadosCliente.id = "";
       this.dadosCliente.nome = "";
       this.dadosCliente.cpfcnpj = "";
       this.dadosCliente.endereco = "";
@@ -210,6 +210,7 @@ export default {
         this.dadosAparecerSumirTabela = false; // primeiro parametro o nome do evento, segundo o evento
         try {
           const data = await http.get("/cliente");
+          console.log(data)
           this.$emit("dadosCliente", data);
           return data;
         } catch (error) {
@@ -225,6 +226,7 @@ export default {
   watch: {
     envInfoFromForm() {
       Object.assign(this.dadosCliente, this.envInfoFromForm);
+      this.dadosCliente.data_nasc = this.envInfoFromForm.data_nasc.split('T')[0]
     },
   },
 };

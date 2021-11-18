@@ -136,10 +136,15 @@
 import { http } from "../../config/config";
 
 export default {
+  props:{
+    dadosProdutoTabela:{
+      type: Object,
+    }
+  },
   data() {
     return {
       dadosProdutos: {
-        id: "",
+        id: "" ,
         nome: "",
         marca: "",
         quantidade: "",
@@ -168,6 +173,7 @@ export default {
         const { data } = await http.post("/produto", this.dadosProdutos);
         alert("Produto cadastrado com sucesso!");
         this.limparDados();
+        this.getProduto();
         return data;
       } catch (error) {
         console.log(error);
@@ -183,6 +189,12 @@ export default {
       }
     },
   },
+  watch:{
+    dadosProdutoTabela(){
+      Object.assign(this.dadosProdutos, this.dadosProdutoTabela)
+      this.dadosProdutos.data_cadastro = this.dadosProdutoTabela.data_cadastro.split('T')[0]
+    }
+  }
 };
 </script>
 

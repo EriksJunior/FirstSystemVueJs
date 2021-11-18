@@ -73,10 +73,15 @@ export default {
   methods: {
     async editProduto(idProduto){
       const {data} = await http.get(`/produto/${idProduto}`)
+      this.$emit('dadosParaFormProduto', data)
+      console.log(data)
+      return data
+    },
+    async deleteProduto(idProduto){
+      const {data} = await http.delete(`/produto/${idProduto}`)
       return data
     }
   },
-  watch: {},
 };
 </script>
 
