@@ -1,15 +1,15 @@
 <template>
   <div id="home">
-      <h1>HOME</h1>
+    <h1>HOME</h1>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
-
+h1 {
+  color: white;
+}
 </style>
