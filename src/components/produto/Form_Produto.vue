@@ -113,7 +113,11 @@
             </b-col>
 
             <b-col col md="12" lg="4" xl="3">
-              <b-button variant="info" class="col-md-12 mt-2 teste" size="lg"
+              <b-button
+                variant="info"
+                class="col-md-12 mt-2 teste"
+                size="lg"
+                @click="getProduto"
                 >Pesquisar</b-button
               >
             </b-col>
@@ -162,9 +166,17 @@ export default {
     async saveProduto() {
       try {
         const { data } = await http.post("/produto", this.dadosProdutos);
-        console.log(data);
         alert("Produto cadastrado com sucesso!");
         this.limparDados();
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async getProduto() {
+      try {
+        const { data } = await http.get("/produto");
+        this.$emit('buscarDadosProduto', data)
         return data;
       } catch (error) {
         console.log(error);
