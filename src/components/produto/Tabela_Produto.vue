@@ -59,7 +59,7 @@
 </template>
 
 <script>
-// import { http } from "../../config/config";
+import { http } from "../../config/config";
 
 export default {
   props: {
@@ -70,7 +70,12 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    async editProduto(idProduto){
+      const {data} = await http.get(`/produto/${idProduto}`)
+      return data
+    }
+  },
   watch: {},
 };
 </script>
