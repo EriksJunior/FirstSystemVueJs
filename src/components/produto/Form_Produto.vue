@@ -123,7 +123,9 @@
             </b-col>
 
             <b-col col md="12" lg="4" xl="3">
-              <b-button class="col-md-12 mt-2" size="lg">Novo</b-button>
+              <b-button class="col-md-12 mt-2" size="lg" @click="limparDados"
+                >Novo</b-button
+              >
             </b-col>
           </b-row>
         </div>
@@ -136,15 +138,18 @@
 import { http } from "../../config/config";
 
 export default {
-  props:{
-    dadosProdutoTabela:{
+  props: {
+    dadosProdutoTabela: {
       type: Object,
-    }
+    },
+    updateTableForm: {
+      type: Boolean,
+    },
   },
   data() {
     return {
       dadosProdutos: {
-        id: "" ,
+        id: "",
         nome: "",
         marca: "",
         quantidade: "",
@@ -157,6 +162,19 @@ export default {
     };
   },
   methods: {
+    async editarProduto() {
+      try {
+        const { data } = await http.put(
+          `/produto/${this.dadosProdutos.id}`,
+          this.dadosProdutos
+        );
+        alert("Cadastro do produto atualizado com sucesso!");
+        this.getProduto();
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
     limparDados() {
       (this.dadosProdutos.id = ""),
         (this.dadosProdutos.nome = ""),
@@ -170,6 +188,11 @@ export default {
     },
     async saveProduto() {
       try {
+        if (this.dadosProdutos.id !== "") {
+          this.editarProduto();
+          this.limparDados();
+          return;
+        }
         const { data } = await http.post("/produto", this.dadosProdutos);
         alert("Produto cadastrado com sucesso!");
         this.limparDados();
@@ -182,19 +205,23 @@ export default {
     async getProduto() {
       try {
         const { data } = await http.get("/produto");
-        this.$emit('buscarDadosProduto', data)
+        this.$emit("buscarDadosProduto", data);
         return data;
       } catch (error) {
         console.log(error);
       }
     },
   },
-  watch:{
-    dadosProdutoTabela(){
-      Object.assign(this.dadosProdutos, this.dadosProdutoTabela)
-      this.dadosProdutos.data_cadastro = this.dadosProdutoTabela.data_cadastro.split('T')[0]
-    }
-  }
+  watch: {
+    dadosProdutoTabela() {
+      Object.assign(this.dadosProdutos, this.dadosProdutoTabela);
+      this.dadosProdutos.data_cadastro =
+        this.dadosProdutoTabela.data_cadastro.split("T")[0];
+    },
+    updateTableForm() {
+      this.getProduto();
+    },
+  },
 };
 </script>
 

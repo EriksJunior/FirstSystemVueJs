@@ -66,22 +66,27 @@ export default {
     dadosProduto: {
       type: Array,
     },
+    eventUpdateTable: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {};
   },
   methods: {
-    async editProduto(idProduto){
-      const {data} = await http.get(`/produto/${idProduto}`)
-      this.$emit('dadosParaFormProduto', data)
-      console.log(data)
-      return data
+    async editProduto(idProduto) {
+      const { data } = await http.get(`/produto/${idProduto}`);
+      this.$emit("dadosParaFormProduto", data);
+      return data;
     },
-    async deleteProduto(idProduto){
-      const {data} = await http.delete(`/produto/${idProduto}`)
-      return data
-    }
+    async deleteProduto(idProduto) {
+      const { data } = await http.delete(`/produto/${idProduto}`);
+      this.$emit("updateTable", this.eventUpdateTable);
+      return data;
+    },
   },
+  watch: {},
 };
 </script>
 

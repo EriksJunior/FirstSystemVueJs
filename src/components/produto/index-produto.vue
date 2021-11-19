@@ -1,7 +1,15 @@
 <template>
   <div id="indexProduto">
-    <FormProduto @buscarDadosProduto="intermediarioFrmProduto = $event" :dadosProdutoTabela="intermediarioFrmTabela"/>
-    <TabelaProduto :dadosProduto="intermediarioFrmProduto" @dadosParaFormProduto="intermediarioFrmTabela = $event"/>
+    <FormProduto
+      @buscarDadosProduto="intermediarioFrmProduto = $event"
+      :dadosProdutoTabela="intermediarioFrmTabela"
+      :updateTableForm="intermedUpdateTable"
+    />
+    <TabelaProduto
+      :dadosProduto="intermediarioFrmProduto"
+      @dadosParaFormProduto="intermediarioFrmTabela = $event"
+      @updateTable="intermedUpdateTable = $event"
+    />
   </div>
 </template>
 
@@ -13,6 +21,7 @@ export default {
     return {
       intermediarioFrmProduto: [],
       intermediarioFrmTabela: {},
+      intermedUpdateTable: "",
     };
   },
   components: {
