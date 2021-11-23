@@ -19,7 +19,6 @@
                           value-field="nome"
                           text-field="nome"
                           :options="produto"
-                          v-model="selecione"
                         >
                         </b-form-select>
                       </b-form-group>
@@ -62,7 +61,6 @@ export default {
     return {
       produto: [],
       tipoMov: [],
-      selecione: "Seleciona aqui...",
     };
   },
   methods: {
