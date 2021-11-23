@@ -94,6 +94,7 @@ export default {
 #containerTabelaProduto {
   width: 90%;
   margin: 0 auto;
+  padding-top: 50px;
 }
 
 #tabelaDeProduto {
