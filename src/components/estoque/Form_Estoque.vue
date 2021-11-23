@@ -33,14 +33,73 @@
                       </b-form-group>
                     </div>
 
-                    <div class="form-group col-md-7 col-sm-4 col-lg-5 col-xl-4">
+                    <div class="form-group col-md-7 col-sm-4 col-lg-5 col-xl-2">
+                      <b-form-group label="Numero NFe">
+                        <b-form-input
+                          class="col-sm-12"
+                          size="sm"
+                        ></b-form-input>
+                      </b-form-group>
+                    </div>
+
+                    <div class="form-group col-md-4 col-sm-4 col-lg-4 col-xl-2">
                       <b-form-group label="Tipo movimentação">
-                        <b-form-select class="mb-3 col-xl-11" size="sm">
-                          >Selecione uma movimentação...
+                        <b-form-select
+                          class="col-xl-12"
+                          size="sm"
+                          :options="tipoMov"
+                        >
+                        </b-form-select>
+                      </b-form-group>
+                    </div>
+
+                    <div class="form-group col-md-4 col-sm-4 col-lg-4 col-xl-3">
+                      <b-form-group label="Nome fornecedor">
+                        <b-form-select
+                          class="col-xl-12"
+                          size="sm"
+                          :options="fornecedor"
+                        >
                         </b-form-select>
                       </b-form-group>
                     </div>
                   </form>
+                  <div>
+                    <b-row class="justify-content-md-center">
+                      <b-col col md="12" lg="4" xl="2">
+                        <b-button
+                          variant="success"
+                          class="col-md-12 mt-2"
+                          size="sm"
+                          >Salvar</b-button
+                        >
+                      </b-col>
+
+                      <b-col col md="12" lg="4" xl="2">
+                        <b-button
+                          variant="danger"
+                          class="col-md-12 col-lg-12 mt-2"
+                          size="sm"
+                          >Deletar</b-button
+                        >
+                      </b-col>
+
+                      <b-col col md="12" lg="4" xl="2">
+                        <b-button
+                          variant="info"
+                          class="col-md-12 mt-2 teste"
+                          size="sm"
+                          >Pesquisar</b-button
+                        >
+                      </b-col>
+
+                      <b-col col md="12" lg="4" xl="2">
+                        <b-button class="col-md-12 mt-2" size="sm"
+                          >Novo</b-button
+                        >
+                      </b-col>
+                    </b-row>
+                  </div>
                 </b-card-text>
               </div>
             </b-tab>
@@ -60,7 +119,17 @@ export default {
   data() {
     return {
       produto: [],
-      tipoMov: [],
+      tipoMov: [
+        { value: "tipoMovimentacao", text: "Compra" },
+        { value: "tipoMovimentacao", text: "Venda" },
+        { value: "tipoMovimentacao", text: "Devolução" },
+        { value: "tipoMovimentacao", text: "Ajuste Entrada" },
+        { value: "tipoMovimentacao", text: "Ajuste Saída" },
+      ],
+      fornecedor: [
+        { value: "nomeFornecedor", text: "Fornecedor teste" },
+        { value: "nomeFornecedor", text: "Fornecedor teste LTDA" },
+      ],
     };
   },
   methods: {
