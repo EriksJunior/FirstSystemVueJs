@@ -151,10 +151,4 @@ export default {
   margin: 0 auto;
   width: 90%;
 }
-
-#cardEstoque {
-}
-
-#inputsEstoque {
-}
 </style>
