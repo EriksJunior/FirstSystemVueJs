@@ -91,7 +91,7 @@ export default {
   methods: {
     async editCliente(idCliente) {
       const { data } = await http.get(`/cliente/${idCliente}`);
-      console.log(data)
+      console.log(data);
       this.$emit("envInfoFromForm", data);
       return data;
     },
@@ -111,7 +111,7 @@ export default {
 <style>
 #containerTabelaCliente {
   width: 47%;
-  margin-left: 40px;
+  margin: 0 auto;
 }
 
 #tabelaDeClientes {

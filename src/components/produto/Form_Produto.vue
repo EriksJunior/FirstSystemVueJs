@@ -15,6 +15,7 @@
             <b-form-group label="Nome:">
               <b-form-input
                 class="col-sm-12"
+                size="sm"
                 placeholder="Nome produto"
                 v-model="dadosProdutos.nome"
               ></b-form-input>
@@ -25,6 +26,7 @@
             <b-form-group label="Marca:">
               <b-form-input
                 placeholder="Marca"
+                size="sm"
                 v-model="dadosProdutos.marca"
               ></b-form-input>
             </b-form-group>
@@ -34,6 +36,7 @@
             <b-form-group label="Quantidade:">
               <b-form-input
                 class="col-sm-12"
+                size="sm"
                 placeholder="Quantidade"
                 v-model="dadosProdutos.quantidade"
               ></b-form-input>
@@ -44,6 +47,7 @@
             <b-form-group label="Preço de custo">
               <b-form-input
                 class="col-sm-12"
+                size="sm"
                 placeholder="Preço do custo"
                 v-model="dadosProdutos.preco_custo"
               ></b-form-input>
@@ -54,6 +58,7 @@
             <b-form-group label="Preço de venda:">
               <b-form-input
                 class="col-sm-12"
+                size="sm"
                 placeholder="Preço de venda"
                 v-model="dadosProdutos.preco_venda"
               ></b-form-input>
@@ -64,6 +69,7 @@
             <b-form-group label="Categoria:">
               <b-form-input
                 class="col-sm-9 col-lg-12"
+                size="sm"
                 placeholder="Categoria"
                 v-model="dadosProdutos.categoria"
               ></b-form-input>
@@ -74,6 +80,7 @@
             <b-form-group label="Data de cadastro:">
               <b-form-input
                 type="date"
+                size="sm"
                 v-model="dadosProdutos.data_cadastro"
               ></b-form-input>
             </b-form-group>
@@ -85,6 +92,7 @@
                 id="textarea"
                 placeholder="Preencha algo..."
                 rows="5"
+                size="sm"
                 v-model="dadosProdutos.obs"
               ></b-form-textarea>
             </b-form-group>
@@ -97,7 +105,7 @@
               <b-button
                 variant="success"
                 class="col-md-12 mt-2"
-                size="lg"
+                size="sm"
                 @click="saveProduto"
                 >Salvar</b-button
               >
@@ -107,7 +115,7 @@
               <b-button
                 variant="danger"
                 class="col-md-12 col-lg-12 mt-2"
-                size="lg"
+                size="sm"
                 >Deletar</b-button
               >
             </b-col>
@@ -116,14 +124,14 @@
               <b-button
                 variant="info"
                 class="col-md-12 mt-2 teste"
-                size="lg"
+                size="sm"
                 @click="getProduto"
                 >Pesquisar</b-button
               >
             </b-col>
 
             <b-col col md="12" lg="4" xl="3">
-              <b-button class="col-md-12 mt-2" size="lg" @click="limparDados"
+              <b-button class="col-md-12 mt-2" size="sm" @click="limparDados"
                 >Novo</b-button
               >
             </b-col>
@@ -227,13 +235,13 @@ export default {
 
 <style>
 #formProduto {
-  width: 50%;
+  width: 100%;
   height: 100%;
 }
 
 #inputsProduto {
-  width: 100%;
-  margin-left: 10px;
+  margin: 0 auto;
+  width: 90%;
   height: 100%;
 }
 </style>

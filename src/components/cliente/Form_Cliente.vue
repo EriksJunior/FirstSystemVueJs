@@ -9,6 +9,7 @@
           <div class="form-group col-md-12 col-sm-6 col-lg-7 col-xl-7">
             <b-form-input
               v-model="dadosCliente.id"
+              size="sm"
               class="col-sm-1"
               hidden
             ></b-form-input>
@@ -17,6 +18,7 @@
               <b-form-input
                 v-model="dadosCliente.nome"
                 class="col-sm-12"
+                size="sm"
               ></b-form-input>
             </b-form-group>
           </div>
@@ -26,13 +28,17 @@
               <b-form-input
                 v-model="dadosCliente.cpfcnpj"
                 class="col-sm-12"
+                size="sm"
               ></b-form-input>
             </b-form-group>
           </div>
 
           <div class="form-group col-sm-6 col-md-12 col-lg-7 col-xl-6">
             <b-form-group label="Endereço:">
-              <b-form-input v-model="dadosCliente.endereco"></b-form-input>
+              <b-form-input
+                v-model="dadosCliente.endereco"
+                size="sm"
+              ></b-form-input>
             </b-form-group>
           </div>
 
@@ -41,6 +47,7 @@
               <b-form-input
                 v-model="dadosCliente.bairro"
                 class="col-sm-12"
+                size="sm"
               ></b-form-input>
             </b-form-group>
           </div>
@@ -50,6 +57,7 @@
               <b-form-input
                 v-model="dadosCliente.numero"
                 class="col-sm-12"
+                size="sm"
               ></b-form-input>
             </b-form-group>
           </div>
@@ -59,6 +67,7 @@
               <b-form-input
                 v-model="dadosCliente.cidade"
                 class="col-sm-12"
+                size="sm"
               ></b-form-input>
             </b-form-group>
           </div>
@@ -68,6 +77,7 @@
               <b-form-input
                 v-model="dadosCliente.uf"
                 class="col-sm-9 col-lg-12"
+                size="sm"
               ></b-form-input>
             </b-form-group>
           </div>
@@ -77,6 +87,7 @@
               <b-form-input
                 v-model="dadosCliente.data_nasc"
                 type="date"
+                size="sm"
               ></b-form-input>
             </b-form-group>
           </div>
@@ -88,6 +99,7 @@
                 placeholder="Preencha algo..."
                 rows="5"
                 v-model="dadosCliente.obs"
+                size="sm"
               ></b-form-textarea>
             </b-form-group>
           </div>
@@ -99,7 +111,7 @@
               <b-button
                 variant="success"
                 class="col-md-12 mt-2"
-                size="lg"
+                size="sm"
                 @click="salvarCliente"
                 >Salvar</b-button
               >
@@ -109,7 +121,7 @@
               <b-button
                 variant="danger"
                 class="col-md-12 col-lg-12 mt-2"
-                size="lg"
+                size="sm"
                 >Deletar</b-button
               >
             </b-col>
@@ -118,14 +130,14 @@
               <b-button
                 variant="info"
                 class="col-md-12 mt-2"
-                size="lg"
+                size="sm"
                 @click="listarDadosTabela"
                 >Pesquisar</b-button
               >
             </b-col>
 
             <b-col col md="12" lg="4" xl="3">
-              <b-button class="col-md-12 mt-2" size="lg" @click="limparDados"
+              <b-button class="col-md-12 mt-2" size="sm" @click="limparDados"
                 >Novo</b-button
               >
             </b-col>
@@ -210,7 +222,7 @@ export default {
         this.dadosAparecerSumirTabela = false; // primeiro parametro o nome do evento, segundo o evento
         try {
           const data = await http.get("/cliente");
-          console.log(data)
+          console.log(data);
           this.$emit("dadosCliente", data);
           return data;
         } catch (error) {
@@ -226,7 +238,8 @@ export default {
   watch: {
     envInfoFromForm() {
       Object.assign(this.dadosCliente, this.envInfoFromForm);
-      this.dadosCliente.data_nasc = this.envInfoFromForm.data_nasc.split('T')[0]
+      this.dadosCliente.data_nasc =
+        this.envInfoFromForm.data_nasc.split("T")[0];
     },
   },
 };
@@ -234,13 +247,13 @@ export default {
 
 <style>
 #formCliente {
-  width: 50%;
+  width: 100%;
   height: 100%;
 }
 
 #inputsCliente {
-  width: 100%;
-  margin-left: 10px;
+  width: 90%;
+  margin: 0 auto;
   height: 100%;
 }
 </style>

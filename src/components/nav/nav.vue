@@ -10,6 +10,11 @@
           <b-dropdown-item to="/produto">Produto</b-dropdown-item>
         </b-nav-item-dropdown>
 
+        <b-nav-item-dropdown text="Controles" right>
+          <b-dropdown-item to="/estoque">Estoque</b-dropdown-item>
+          <b-dropdown-item to="/financeiro">Financeiro</b-dropdown-item>
+        </b-nav-item-dropdown>
+
         <!-- <b-nav-item-dropdown text="User" right>
             <b-dropdown-item href="#">Account</b-dropdown-item>
             <b-dropdown-item href="#">Settings</b-dropdown-item>
