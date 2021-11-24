@@ -58,6 +58,8 @@
                         <b-form-select
                           class="col-xl-12"
                           size="sm"
+                          value-field="nome"
+                          text-field="nome"
                           :options="fornecedor"
                         >
                         </b-form-select>
@@ -126,22 +128,34 @@ export default {
         { value: "tipoMovimentacao", text: "Ajuste Entrada" },
         { value: "tipoMovimentacao", text: "Ajuste Saída" },
       ],
-      fornecedor: [
-        { value: "nomeFornecedor", text: "Fornecedor teste" },
-        { value: "nomeFornecedor", text: "Fornecedor teste LTDA" },
-      ],
+      fornecedor: [],
     };
   },
   methods: {
     async dadosProduto() {
-      const { data } = await http.get("/produto");
-      this.produto = data;
-      console.log(this.produto);
-      return data;
+      try {
+        const { data } = await http.get("/produto");
+        this.produto = data;
+        console.log(this.produto);
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async dadosFornecedor() {
+      try {
+        const { data } = await http.get("/fornecedor");
+        this.fornecedor = data;
+        console.log(this.fornecedor);
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
   mounted() {
     this.dadosProduto();
+    this.dadosFornecedor();
   },
 };
 </script>
