@@ -78,8 +78,12 @@
                         size="xl"
                         title="Cadastro de Fornecedor"
                         ok-title="Fechar"
-                        cancel-variant="danger"
+                        cancel-variant="primary"
                         ok-only
+                        header-close-variant="danger"
+                        footer-bg-variant="info"
+                        header-bg-variant="info"
+                        header-text-variant="light"
                       >
                         <form class="row">
                           <div
@@ -93,7 +97,7 @@
                                 class="col-sm-12"
                                 size="sm"
                                 placeholder="Razão Social"
-                                v-model="this.infoFornecedor.razaoSocial"
+                                v-model="infoFornecedor.razaoSocial"
                               ></b-form-input>
                             </b-form-group>
                           </div>
@@ -109,7 +113,7 @@
                                 class="col-sm-12"
                                 size="sm"
                                 placeholder="Nome Fantasia"
-                                v-model="this.infoFornecedor.nomeFantasia"
+                                v-model="infoFornecedor.nomeFantasia"
                               ></b-form-input>
                             </b-form-group>
                           </div>
@@ -125,7 +129,7 @@
                                 class="col-sm-12"
                                 size="sm"
                                 placeholder="Endereço"
-                                v-model="this.infoFornecedor.endereco"
+                                v-model="infoFornecedor.endereco"
                               ></b-form-input>
                             </b-form-group>
                           </div>
@@ -141,7 +145,7 @@
                                 class="col-sm-12"
                                 size="sm"
                                 placeholder="Bairro"
-                                v-model="this.infoFornecedor.bairro"
+                                v-model="infoFornecedor.bairro"
                               ></b-form-input>
                             </b-form-group>
                           </div>
@@ -157,7 +161,7 @@
                                 class="col-sm-12"
                                 size="sm"
                                 placeholder="N°"
-                                v-model="this.infoFornecedor.numero"
+                                v-model="infoFornecedor.numero"
                               ></b-form-input>
                             </b-form-group>
                           </div>
@@ -173,7 +177,7 @@
                                 class="col-sm-12"
                                 size="sm"
                                 placeholder="Cidade"
-                                v-model="this.infoFornecedor.cidade"
+                                v-model="infoFornecedor.cidade"
                               ></b-form-input>
                             </b-form-group>
                           </div>
@@ -189,7 +193,7 @@
                                 class="col-sm-12"
                                 size="sm"
                                 placeholder="UF"
-                                v-model="this.infoFornecedor.uf"
+                                v-model="infoFornecedor.uf"
                               ></b-form-input>
                             </b-form-group>
                           </div>
@@ -205,7 +209,7 @@
                                 class="col-sm-12"
                                 size="sm"
                                 placeholder="CNPJ"
-                                v-model="this.infoFornecedor.cnpj"
+                                v-model="infoFornecedor.cnpj"
                               ></b-form-input>
                             </b-form-group>
                           </div>
@@ -221,7 +225,7 @@
                                 class="col-sm-12"
                                 size="sm"
                                 placeholder="IE"
-                                v-model="this.infoFornecedor.ie"
+                                v-model="infoFornecedor.ie"
                               ></b-form-input>
                             </b-form-group>
                           </div>
@@ -237,7 +241,7 @@
                                 class="col-sm-12"
                                 size="sm"
                                 placeholder="Telefone"
-                                v-model="this.infoFornecedor.telefone"
+                                v-model="infoFornecedor.telefone"
                               ></b-form-input>
                             </b-form-group>
                           </div>
@@ -250,6 +254,7 @@
                                 variant="success"
                                 class="col-md-12 mt-2"
                                 size="md"
+                                @click="salvarFornecedor"
                                 >Salvar</b-button
                               >
                             </b-col>
@@ -264,7 +269,7 @@
 
                         <div id="tabelaDeProduto">
                           <div id="tituloTabela">
-                            <h1 style="color: black"><u>Listagem</u></h1>
+                            <h3><u>Listagem</u></h3>
                           </div>
                           <table class="table table-dark">
                             <thead>
@@ -428,8 +433,8 @@ export default {
         console.log(error);
       }
     },
-    teste() {
-      alert("funcionando");
+    salvarFornecedor() {
+      console.log(this.infoFornecedor);
     },
   },
   mounted() {
@@ -449,8 +454,8 @@ export default {
   text-align: center;
 }
 
-#tituloTabela h1 {
-  color: rgb(6, 6, 182) !important;
+#tituloTabela h3 {
+  color: rgb(9, 134, 134) !important;
   font-family: monospace;
   font-style: italic;
   font-weight: bold;
