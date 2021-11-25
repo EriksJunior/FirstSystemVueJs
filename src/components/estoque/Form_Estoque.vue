@@ -264,7 +264,7 @@
 
                         <div id="tabelaDeProduto">
                           <div id="tituloTabela">
-                            <h1 style="color: black">Listagem</h1>
+                            <h1 style="color: black"><u>Listagem</u></h1>
                           </div>
                           <table class="table table-dark">
                             <thead>
@@ -450,7 +450,7 @@ export default {
 }
 
 #tituloTabela h1 {
-  color: rgb(30, 30, 167) !important;
+  color: rgb(6, 6, 182) !important;
   font-family: monospace;
   font-style: italic;
   font-weight: bold;
