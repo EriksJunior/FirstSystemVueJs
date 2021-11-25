@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="form-group col-md-4 col-sm-4 col-lg-4 col-xl-3">
-                      <b-form-group label="Nome fornecedor">
+                      <!-- <b-form-group label="Nome fornecedor">
                         <b-form-select
                           class="col-xl-12"
                           size="sm"
@@ -63,7 +63,21 @@
                           :options="fornecedor"
                         >
                         </b-form-select>
-                      </b-form-group>
+                      </b-form-group> -->
+
+                      Nome fornecedor
+                      <b-button size="sm" variant="primary"
+                        ><b-icon-plus></b-icon-plus>
+                      </b-button>
+
+                      <b-form-select
+                        class="col-xl-12"
+                        size="sm"
+                        value-field="nome"
+                        text-field="nome"
+                        :options="fornecedor"
+                      >
+                      </b-form-select>
                     </div>
                   </form>
                   <div>
