@@ -438,7 +438,7 @@ export default {
     async salvarFornecedor() {
       try {
         if (this.infoFornecedor.id !== "") {
-          alert("gfd");
+          this.atualizarFornecedor();
           return;
         }
         const { data } = await http.post("/fornecedor", this.infoFornecedor);
@@ -453,23 +453,20 @@ export default {
     async editarFornecedor(idFornecedor) {
       try {
         const { data } = await http.get(`/fornecedor/${idFornecedor}`);
-        (this.infoFornecedor.id = data.id),
-          (this.infoFornecedor.razao_social = data.razao_social),
-          (this.infoFornecedor.nome_fantasia = data.nome_fantasia),
-          (this.infoFornecedor.endereco = data.endereco),
-          (this.infoFornecedor.bairro = data.bairro),
-          (this.infoFornecedor.numero = data.numero),
-          (this.infoFornecedor.cidade = data.cidade),
-          (this.infoFornecedor.uf = data.uf),
-          (this.infoFornecedor.cnpj = data.cnpj),
-          (this.infoFornecedor.ie = data.ie),
-          (this.infoFornecedor.telefone = data.telefone);
+        Object.assign(this.infoFornecedor, data);
         return data;
       } catch (error) {
         console.log(error);
       }
     },
-    async atualizarFornecedor() {},
+    async atualizarFornecedor() {
+      const { data } = await http.put(
+        `/fornecedor/${this.infoFornecedor.id}`,
+        this.infoFornecedor
+      );
+      console.log(data);
+      return data;
+    },
     async excluirFornecedor(idFornecedor) {
       alert(`Deletando o fornecedor com ID: ${idFornecedor}`);
     },
