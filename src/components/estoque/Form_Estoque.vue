@@ -309,6 +309,7 @@
                                     icon="check-square-fill"
                                     scale="2"
                                     variant="success"
+                                    @click="editarFornecedor(item.id)"
                                   ></b-icon>
                                 </td>
                                 <td style="text-align: center">
@@ -317,6 +318,7 @@
                                     icon="x-square-fill"
                                     scale="2"
                                     variant="danger"
+                                    @click="excluirFornecedor(item.id)"
                                   ></b-icon>
                                 </td>
                               </tr>
@@ -446,6 +448,12 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+    async editarFornecedor(idFornecedor) {
+      alert(`Edianto o fornecedor com o ID: ${idFornecedor}`);
+    },
+    async excluirFornecedor(idFornecedor) {
+      alert(`Deletando o fornecedor com ID: ${idFornecedor}`);
     },
     limparDadosFornecedor() {
       (this.infoFornecedor.id = ""),
