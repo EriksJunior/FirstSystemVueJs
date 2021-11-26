@@ -281,7 +281,7 @@
                           <table class="table table-dark">
                             <thead>
                               <tr>
-                                <th scope="col">Nome</th>
+                                <th scope="col">Razão Social</th>
                                 <th scope="col">Endereço</th>
                                 <th scope="col">Cidade</th>
                                 <th scope="col">Telefone</th>
@@ -329,8 +329,8 @@
                       <b-form-select
                         class="col-xl-12"
                         size="sm"
-                        value-field="nome"
-                        text-field="nome"
+                        value-field="razao_social"
+                        text-field="razao_social"
                         :options="fornecedor"
                       >
                       </b-form-select>
@@ -441,6 +441,7 @@ export default {
         console.log(data);
         alert("Fornecedor Salvo com sucesso");
         this.limparDadosFornecedor();
+        this.pegarDadosFornecedor();
         return data;
       } catch (error) {
         console.log(error);
