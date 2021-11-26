@@ -264,7 +264,10 @@
                             </b-col>
 
                             <b-col col md="12" lg="4" xl="1">
-                              <b-button class="col-md-12 mt-2" size="md"
+                              <b-button
+                                class="col-md-12 mt-2"
+                                size="md"
+                                @click="limparDadosFornecedor"
                                 >Novo</b-button
                               >
                             </b-col>
@@ -287,24 +290,18 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr
-                                v-for="produto in dadosProduto"
-                                :key="produto.id"
-                              >
+                              <tr v-for="item in fornecedor" :key="item.id">
                                 <td>
-                                  {{ produto.id }}
+                                  {{ item.razao_social }}
                                 </td>
                                 <td>
-                                  {{ produto.nome }}
+                                  {{ item.endereco }}
                                 </td>
                                 <td>
-                                  {{ produto.quantidade }}
+                                  {{ item.cidade }}
                                 </td>
                                 <td>
-                                  {{ produto.data_cadastro }}
-                                </td>
-                                <td>
-                                  {{ produto.preco_custo }}
+                                  {{ item.telefone }}
                                 </td>
                                 <td style="text-align: center">
                                   <b-icon
@@ -407,6 +404,7 @@ export default {
         telefone: "",
       },
       produto: [],
+      fornecedor: [],
       tipoMov: [
         { value: "tipoMovimentacao", text: "Compra" },
         { value: "tipoMovimentacao", text: "Venda" },
@@ -414,7 +412,6 @@ export default {
         { value: "tipoMovimentacao", text: "Ajuste Entrada" },
         { value: "tipoMovimentacao", text: "Ajuste Saída" },
       ],
-      fornecedor: [],
     };
   },
   methods: {
@@ -443,10 +440,24 @@ export default {
         const { data } = await http.post("/fornecedor", this.infoFornecedor);
         console.log(data);
         alert("Fornecedor Salvo com sucesso");
+        this.limparDadosFornecedor();
         return data;
       } catch (error) {
         console.log(error);
       }
+    },
+    limparDadosFornecedor() {
+      (this.infoFornecedor.id = ""),
+        (this.infoFornecedor.razao_social = ""),
+        (this.infoFornecedor.nome_fantasia = ""),
+        (this.infoFornecedor.endereco = ""),
+        (this.infoFornecedor.bairro = ""),
+        (this.infoFornecedor.numero = ""),
+        (this.infoFornecedor.cidade = ""),
+        (this.infoFornecedor.uf = ""),
+        (this.infoFornecedor.cnpj = ""),
+        (this.infoFornecedor.ie = ""),
+        (this.infoFornecedor.telefone = "");
     },
   },
   mounted() {
