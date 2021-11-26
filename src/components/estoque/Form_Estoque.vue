@@ -421,7 +421,6 @@ export default {
       try {
         const { data } = await http.get("/produto");
         this.produto = data;
-        console.log(this.produto);
         return data;
       } catch (error) {
         console.log(error);
@@ -431,7 +430,6 @@ export default {
       try {
         const { data } = await http.get("/fornecedor");
         this.fornecedor = data;
-        console.log(this.fornecedor);
         return data;
       } catch (error) {
         console.log(error);
@@ -439,8 +437,11 @@ export default {
     },
     async salvarFornecedor() {
       try {
+        if (this.infoFornecedor.id !== "") {
+          alert("gfd");
+          return;
+        }
         const { data } = await http.post("/fornecedor", this.infoFornecedor);
-        console.log(data);
         alert("Fornecedor Salvo com sucesso");
         this.limparDadosFornecedor();
         this.pegarDadosFornecedor();
@@ -450,8 +451,25 @@ export default {
       }
     },
     async editarFornecedor(idFornecedor) {
-      alert(`Edianto o fornecedor com o ID: ${idFornecedor}`);
+      try {
+        const { data } = await http.get(`/fornecedor/${idFornecedor}`);
+        (this.infoFornecedor.id = data.id),
+          (this.infoFornecedor.razao_social = data.razao_social),
+          (this.infoFornecedor.nome_fantasia = data.nome_fantasia),
+          (this.infoFornecedor.endereco = data.endereco),
+          (this.infoFornecedor.bairro = data.bairro),
+          (this.infoFornecedor.numero = data.numero),
+          (this.infoFornecedor.cidade = data.cidade),
+          (this.infoFornecedor.uf = data.uf),
+          (this.infoFornecedor.cnpj = data.cnpj),
+          (this.infoFornecedor.ie = data.ie),
+          (this.infoFornecedor.telefone = data.telefone);
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
     },
+    async atualizarFornecedor() {},
     async excluirFornecedor(idFornecedor) {
       alert(`Deletando o fornecedor com ID: ${idFornecedor}`);
     },
