@@ -92,12 +92,16 @@
                               col-md-7 col-sm-4 col-lg-5 col-xl-4
                             "
                           >
+                            <b-form-input
+                              hidden
+                              v-model="infoFornecedor.id"
+                            ></b-form-input>
                             <b-form-group label="Razão Social">
                               <b-form-input
                                 class="col-sm-12"
                                 size="sm"
                                 placeholder="Razão Social"
-                                v-model="infoFornecedor.razaoSocial"
+                                v-model="infoFornecedor.razao_social"
                               ></b-form-input>
                             </b-form-group>
                           </div>
@@ -113,7 +117,7 @@
                                 class="col-sm-12"
                                 size="sm"
                                 placeholder="Nome Fantasia"
-                                v-model="infoFornecedor.nomeFantasia"
+                                v-model="infoFornecedor.nome_fantasia"
                               ></b-form-input>
                             </b-form-group>
                           </div>
@@ -390,8 +394,9 @@ export default {
   data() {
     return {
       infoFornecedor: {
-        razaoSocial: "",
-        nomeFantasia: "",
+        id: "",
+        razao_social: "",
+        nome_fantasia: "",
         endereco: "",
         bairro: "",
         numero: "",
@@ -423,7 +428,7 @@ export default {
         console.log(error);
       }
     },
-    async dadosFornecedor() {
+    async pegarDadosFornecedor() {
       try {
         const { data } = await http.get("/fornecedor");
         this.fornecedor = data;
@@ -433,13 +438,20 @@ export default {
         console.log(error);
       }
     },
-    salvarFornecedor() {
-      console.log(this.infoFornecedor);
+    async salvarFornecedor() {
+      try {
+        const { data } = await http.post("/fornecedor", this.infoFornecedor);
+        console.log(data);
+        alert("Fornecedor Salvo com sucesso");
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
   mounted() {
     this.dadosProduto();
-    this.dadosFornecedor();
+    this.pegarDadosFornecedor();
   },
 };
 </script>
@@ -459,5 +471,9 @@ export default {
   font-family: monospace;
   font-style: italic;
   font-weight: bold;
+}
+
+#tabelaDeProduto {
+  margin-top: 50px;
 }
 </style>
