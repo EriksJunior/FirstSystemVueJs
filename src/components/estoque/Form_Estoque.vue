@@ -439,6 +439,9 @@ export default {
       try {
         if (this.infoFornecedor.id !== "") {
           this.atualizarFornecedor();
+          this.limparDadosFornecedor();
+          alert("Dados do fornecedor atualizados!");
+          this.pegarDadosFornecedor();
           return;
         }
         const { data } = await http.post("/fornecedor", this.infoFornecedor);
@@ -459,6 +462,9 @@ export default {
         console.log(error);
       }
     },
+    async excluirFornecedor(idFornecedor) {
+      alert(`Deletando o fornecedor com ID: ${idFornecedor}`);
+    },
     async atualizarFornecedor() {
       const { data } = await http.put(
         `/fornecedor/${this.infoFornecedor.id}`,
@@ -466,9 +472,6 @@ export default {
       );
       console.log(data);
       return data;
-    },
-    async excluirFornecedor(idFornecedor) {
-      alert(`Deletando o fornecedor com ID: ${idFornecedor}`);
     },
     limparDadosFornecedor() {
       (this.infoFornecedor.id = ""),
