@@ -463,7 +463,14 @@ export default {
       }
     },
     async excluirFornecedor(idFornecedor) {
-      alert(`Deletando o fornecedor com ID: ${idFornecedor}`);
+      try {
+        const { data } = await http.delete(`/forncedor/${idFornecedor}`);
+        console.log(data)
+        return data
+        
+      } catch (error) {
+        console.log(error)
+      }
     },
     async atualizarFornecedor() {
       const { data } = await http.put(
