@@ -246,6 +246,7 @@ export default {
       try {
         const { data } = await http.get("/produto");
         this.produto = data;
+        this.$emit("pegarTodosProdutos", this.data);
         return data;
       } catch (error) {
         console.log(error);
@@ -255,6 +256,7 @@ export default {
       try {
         const { data } = await http.get("/fornecedor");
         this.fornecedor = data;
+        this.$emit("pegarTodosFornecedores", this.data);
         return data;
       } catch (error) {
         console.log(error);
