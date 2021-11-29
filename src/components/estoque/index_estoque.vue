@@ -14,6 +14,4 @@ export default {
 </script>
 
 <style>
-#containerGeral {
-}
 </style>

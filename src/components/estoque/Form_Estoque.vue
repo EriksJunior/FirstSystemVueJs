@@ -68,7 +68,11 @@
                       <!-- INICIO DO MODAL -->
                       <div class="teste">
                         Nome fornecedor
-                        <b-button v-b-modal.modal-xl size="sm" variant="primary"
+                        <b-button
+                          class="ml-5"
+                          v-b-modal.modal-xl
+                          size="sm"
+                          variant="primary"
                           ><b-icon-plus scale="2"></b-icon-plus
                         ></b-button>
                       </div>
@@ -274,7 +278,7 @@
                           </b-row>
                         </div>
 
-                        <div id="tabelaDeProduto">
+                        <div class="table-responsive" id="tabelaDeProduto">
                           <div id="tituloTabela">
                             <h3><u>Listagem</u></h3>
                           </div>
@@ -303,18 +307,18 @@
                                 <td>
                                   {{ item.telefone }}
                                 </td>
-                                <td style="text-align: center">
+                                <td>
                                   <b-icon
-                                    class="icones"
+                                    class="icones ml-3"
                                     icon="check-square-fill"
                                     scale="2"
                                     variant="success"
                                     @click="editarFornecedor(item.id)"
                                   ></b-icon>
                                 </td>
-                                <td style="text-align: center">
+                                <td>
                                   <b-icon
-                                    class="icones"
+                                    class="icones ml-3"
                                     icon="x-square-fill"
                                     scale="2"
                                     variant="danger"
@@ -359,15 +363,6 @@
                       </b-col>
 
                       <b-col col md="12" lg="4" xl="2">
-                        <b-button
-                          variant="info"
-                          class="col-md-12 mt-2"
-                          size="sm"
-                          >Pesquisar</b-button
-                        >
-                      </b-col>
-
-                      <b-col col md="12" lg="4" xl="2">
                         <b-button class="col-md-12 mt-2" size="sm"
                           >Novo</b-button
                         >
@@ -378,7 +373,9 @@
               </div>
             </b-tab>
             <b-tab title="Pesquisar">
-              <b-card-text>Tab contents 2</b-card-text>
+              <div id="positionTable">
+                <TableEstoque />
+              </div>
             </b-tab>
           </b-tabs>
         </b-card>
@@ -389,7 +386,11 @@
 
 <script>
 import { http } from "../../config/config";
+import TableEstoque from "./Table_Estoque.vue";
 export default {
+  components: {
+    TableEstoque,
+  },
   data() {
     return {
       infoFornecedor: {
@@ -464,12 +465,13 @@ export default {
     },
     async excluirFornecedor(idFornecedor) {
       try {
-        const { data } = await http.delete(`/forncedor/${idFornecedor}`);
-        console.log(data)
-        return data
-        
+        const { data } = await http.delete(`/fornecedor/${idFornecedor}`);
+        console.log(data);
+        alert("Fornecedor deletado com sucesso!");
+        this.pegarDadosFornecedor();
+        return data;
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     },
     async atualizarFornecedor() {
@@ -520,5 +522,9 @@ export default {
 
 #tabelaDeProduto {
   margin-top: 50px;
+}
+
+#positionTable {
+  margin-top: 15px;
 }
 </style>
