@@ -16,7 +16,7 @@
                         <b-form-select
                           class="col-xl-11"
                           size="sm"
-                          value-field="nome"
+                          value-field="id"
                           text-field="nome"
                           :options="produto"
                         >
