@@ -108,8 +108,8 @@
             <b-tab title="Pesquisar">
               <div id="positionTable">
                 <TableEstoque
-                  @pegarTodosFornecedores="teste = $event"
-                  :dadosFornecedor="dadosFornecedor"
+                  @pegarTodosFornecedores="fornecedor = $event"
+                  :dadosFornecedor="fornecedor"
                 />
               </div>
             </b-tab>
@@ -136,7 +136,6 @@ export default {
   },
   data() {
     return {
-      teste: "",
       produto: [],
       fornecedor: [],
       tipoMov: [
@@ -159,7 +158,7 @@ export default {
       }
     },
     testeDados() {
-      console.log(this.teste);
+      console.log(this.fornecedor);
     },
     // async pegarDadosFornecedor() {
     //   try {

@@ -238,7 +238,7 @@ export default {
       try {
         const { data } = await http.get("/fornecedor");
         this.fornecedor = data;
-        this.$emit("pegarTodosFornecedores", this.data);
+        this.$emit("pegarTodosFornecedores", this.fornecedor);
         return data;
       } catch (error) {
         console.log(error);
@@ -329,8 +329,5 @@ export default {
 #iconPlus {
   outline: none !important;
   cursor: pointer;
-}
-
-#iconModal {
 }
 </style>
