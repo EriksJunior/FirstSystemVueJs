@@ -44,6 +44,7 @@
           variant="info"
           class="col-md-1 col-sm-2 col-lg-1 col-xl-1 mt-3"
           size="sm"
+          @click="this.pesquisarTodasMovimentacoes"
           >Pesquisar</b-button
         >
       </div>
@@ -52,7 +53,22 @@
 </template>
 
 <script>
-export default {};
+import { http } from "../../config/config";
+export default {
+  data() {
+    return {
+      dadosDaTablea: [],
+    };
+  },
+  methods: {
+    async pesquisarTodasMovimentacoes() {
+      const { data } = await http.get("/movestoque");
+
+      console.og(data);
+      return data;
+    },
+  },
+};
 </script>
 
 <style>
