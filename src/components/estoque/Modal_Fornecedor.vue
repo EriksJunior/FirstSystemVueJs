@@ -230,28 +230,10 @@ export default {
         ie: "",
         telefone: "",
       },
-      produto: [],
       fornecedor: [],
-      tipoMov: [
-        { value: "tipoMovimentacao", text: "Compra" },
-        { value: "tipoMovimentacao", text: "Venda" },
-        { value: "tipoMovimentacao", text: "Devolução" },
-        { value: "tipoMovimentacao", text: "Ajuste Entrada" },
-        { value: "tipoMovimentacao", text: "Ajuste Saída" },
-      ],
     };
   },
   methods: {
-    async dadosProduto() {
-      try {
-        const { data } = await http.get("/produto");
-        this.produto = data;
-        this.$emit("pegarTodosProdutos", this.data);
-        return data;
-      } catch (error) {
-        console.log(error);
-      }
-    },
     async pegarDadosFornecedor() {
       try {
         const { data } = await http.get("/fornecedor");
@@ -323,7 +305,6 @@ export default {
     },
   },
   mounted() {
-    this.dadosProduto();
     this.pegarDadosFornecedor();
   },
 };

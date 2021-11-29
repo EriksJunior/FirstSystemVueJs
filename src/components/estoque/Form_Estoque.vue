@@ -126,6 +126,11 @@ export default {
     TableEstoque,
     ModalFornecedor,
   },
+  props: {
+    dadosProdutoOutroForm: {
+      type: Array,
+    },
+  },
   data() {
     return {
       produto: [],
