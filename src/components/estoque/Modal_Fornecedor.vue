@@ -238,7 +238,7 @@ export default {
       try {
         const { data } = await http.get("/fornecedor");
         this.fornecedor = data;
-        this.$emit("pegarTodosFornecedores", this.fornecedor);
+        this.$emit("pegarTodosFornecedores", this.data);
         return data;
       } catch (error) {
         console.log(error);

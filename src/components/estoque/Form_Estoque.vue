@@ -109,7 +109,7 @@
               <div id="positionTable">
                 <TableEstoque
                   @pegarTodosFornecedores="fornecedor = $event"
-                  :dadosFornecedor="fornecedor"
+                 
                 />
               </div>
             </b-tab>
@@ -128,11 +128,6 @@ export default {
   components: {
     TableEstoque,
     ModalFornecedor,
-  },
-  props: {
-    dadosFornecedor: {
-      type: Array,
-    },
   },
   data() {
     return {
