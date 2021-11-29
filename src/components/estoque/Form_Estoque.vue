@@ -107,7 +107,10 @@
             </b-tab>
             <b-tab title="Pesquisar">
               <div id="positionTable">
-                <TableEstoque />
+                <TableEstoque
+                  @pegarTodosFornecedores="teste = $event"
+                  :dadosFornecedor="dadosFornecedor"
+                />
               </div>
             </b-tab>
           </b-tabs>
@@ -127,12 +130,13 @@ export default {
     ModalFornecedor,
   },
   props: {
-    dadosProdutoOutroForm: {
+    dadosFornecedor: {
       type: Array,
     },
   },
   data() {
     return {
+      teste: "",
       produto: [],
       fornecedor: [],
       tipoMov: [
@@ -154,19 +158,24 @@ export default {
         console.log(error);
       }
     },
-    async pegarDadosFornecedor() {
-      try {
-        const { data } = await http.get("/fornecedor");
-        this.fornecedor = data;
-        return data;
-      } catch (error) {
-        console.log(error);
-      }
+    testeDados() {
+      console.log(this.teste);
     },
+    // async pegarDadosFornecedor() {
+    //   try {
+    //     const { data } = await http.get("/fornecedor");
+    //     this.fornecedor = data;
+    //     return data;
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // },
   },
   mounted() {
     this.dadosProduto();
-    this.pegarDadosFornecedor();
+    this.testeDados();
+
+    // this.pegarDadosFornecedor();
   },
 };
 </script>
