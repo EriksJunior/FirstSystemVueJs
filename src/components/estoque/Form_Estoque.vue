@@ -61,7 +61,10 @@
                         Nome fornecedor
 
                         <!-- Modal fornecedor -->
-                        <ModalFornecedor class="mr-2" />
+                        <ModalFornecedor
+                          class="mr-2"
+                          @pegarTodosFornecedores="pegarDadosFornecedor"
+                        />
                         <!-- Modal fornecedor -->
                       </div>
 
@@ -107,10 +110,7 @@
             </b-tab>
             <b-tab title="Pesquisar">
               <div id="positionTable">
-                <TableEstoque
-                  @pegarTodosFornecedores="fornecedor = $event"
-                 
-                />
+                <TableEstoque />
               </div>
             </b-tab>
           </b-tabs>
@@ -152,24 +152,21 @@ export default {
         console.log(error);
       }
     },
-    testeDados() {
-      console.log(this.fornecedor);
+
+    async pegarDadosFornecedor() {
+      try {
+        const { data } = await http.get("/fornecedor");
+        this.fornecedor = data;
+        console.log("tedfssdfsdfsdfssd");
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
     },
-    // async pegarDadosFornecedor() {
-    //   try {
-    //     const { data } = await http.get("/fornecedor");
-    //     this.fornecedor = data;
-    //     return data;
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // },
   },
   mounted() {
     this.dadosProduto();
-    this.testeDados();
-
-    // this.pegarDadosFornecedor();
+    this.pegarDadosFornecedor();
   },
 };
 </script>
@@ -197,8 +194,5 @@ export default {
 
 #positionTable {
   margin-top: 15px;
-}
-
-#tituloMaisModal {
 }
 </style>

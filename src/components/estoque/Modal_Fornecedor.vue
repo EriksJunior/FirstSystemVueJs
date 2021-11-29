@@ -217,6 +217,7 @@ import { http } from "../../config/config";
 export default {
   data() {
     return {
+      dadosFornecedorFromEstoque: false,
       infoFornecedor: {
         id: "",
         razao_social: "",
@@ -238,7 +239,6 @@ export default {
       try {
         const { data } = await http.get("/fornecedor");
         this.fornecedor = data;
-        this.$emit("pegarTodosFornecedores", this.data);
         return data;
       } catch (error) {
         console.log(error);
@@ -257,6 +257,7 @@ export default {
         alert("Fornecedor Salvo com sucesso");
         this.limparDadosFornecedor();
         this.pegarDadosFornecedor();
+        this.$emit("pegarTodosFornecedores", true);
         return data;
       } catch (error) {
         console.log(error);
