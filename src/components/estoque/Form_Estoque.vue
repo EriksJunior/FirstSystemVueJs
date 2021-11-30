@@ -10,9 +10,11 @@
             <b-tab title="Momentação Estoque" active>
               <div id="cardEstoque">
                 <b-card-text>
-                  <form class="row">
+                  <form class="row" ref="resetForm" @submit="limparCampos">
                     <div class="form-group col-md-4 col-sm-4 col-lg-4 col-xl-3">
                       <b-form-group label="Produto">
+                        <b-form-select hidden v-model="dadosMovEstoque.id">
+                        </b-form-select>
                         <b-form-select
                           class="col-xl-11"
                           size="sm"
@@ -30,6 +32,7 @@
                         <b-form-input
                           class="col-sm-12"
                           size="sm"
+                          v-model="dadosMovEstoque.quantidade"
                         ></b-form-input>
                       </b-form-group>
                     </div>
@@ -39,6 +42,7 @@
                         <b-form-input
                           class="col-sm-12"
                           size="sm"
+                          v-model="dadosMovEstoque.numero_nfe"
                         ></b-form-input>
                       </b-form-group>
                     </div>
@@ -48,7 +52,9 @@
                         <b-form-select
                           class="col-xl-12"
                           size="sm"
+                          value-field="text"
                           :options="tipoMov"
+                          v-model="dadosMovEstoque.tipo_movimentacao"
                         >
                         </b-form-select>
                       </b-form-group>
@@ -72,8 +78,9 @@
                       <b-form-select
                         class="col-xl-12"
                         size="sm"
-                        value-field="razao_social"
+                        value-field="id"
                         text-field="razao_social"
+                        v-model="dadosMovEstoque.id_fornecedor"
                         :options="fornecedor"
                       >
                       </b-form-select>
@@ -134,25 +141,32 @@ export default {
   data() {
     return {
       dadosMovEstoque: {
+        id: "",
         id_produto: "",
+        id_fornecedor: "",
+        quantidade: "",
+        numero_nfe: "",
+        tipo_movimentacao: "",
       },
       produto: [],
       fornecedor: [],
       tipoMov: [
-        { value: "idCompra", text: "Compra" },
-        { value: "idVenda", text: "Venda" },
-        { value: "idDevolucao", text: "Devolução" },
-        { value: "idAjusteEntrada", text: "Ajuste Entrada" },
-        { value: "idAjusteSaida", text: "Ajuste Saída" },
+        { value: "idMov", text: "Compra" },
+        { value: "idMov", text: "Venda" },
+        { value: "idMov", text: "Devolução" },
+        { value: "idMov", text: "Ajuste Entrada" },
+        { value: "idMov", text: "Ajuste Saída" },
       ],
     };
   },
   methods: {
+    limparCampos() {
+      this.$refs.resetForm.reset();
+    },
     async dadosProduto() {
       try {
         const { data } = await http.get("/produto");
         this.produto = data;
-        console.log(this.produto);
         return data;
       } catch (error) {
         console.log(error);
@@ -163,7 +177,6 @@ export default {
       try {
         const { data } = await http.get("/fornecedor");
         this.fornecedor = data;
-        console.log("tedfssdfsdfsdfssd");
         return data;
       } catch (error) {
         console.log(error);
@@ -171,9 +184,15 @@ export default {
     },
 
     async saveMovimentacaoEstoque() {
-      console.log(this.dadosMovEstoque.id_produto);
-      // const { data } = await http.post("/movestoque");
-      // return data;
+      try {
+        const { data } = await http.post("/movestoque", this.dadosMovEstoque);
+        console.log(this.dadosMovEstoque);
+        this.limparCampos();
+        alert("Movimentação salva com sucesso!");
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
   mounted() {
