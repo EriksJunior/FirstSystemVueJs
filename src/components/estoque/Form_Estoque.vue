@@ -18,6 +18,7 @@
                           size="sm"
                           value-field="id"
                           text-field="nome"
+                          v-model="dadosMovEstoque.id_produto"
                           :options="produto"
                         >
                         </b-form-select>
@@ -85,6 +86,7 @@
                           variant="success"
                           class="col-md-12 mt-2"
                           size="sm"
+                          @click="saveMovimentacaoEstoque"
                           >Salvar</b-button
                         >
                       </b-col>
@@ -131,14 +133,17 @@ export default {
   },
   data() {
     return {
+      dadosMovEstoque: {
+        id_produto: "",
+      },
       produto: [],
       fornecedor: [],
       tipoMov: [
-        { value: "tipoMovimentacao", text: "Compra" },
-        { value: "tipoMovimentacao", text: "Venda" },
-        { value: "tipoMovimentacao", text: "Devolução" },
-        { value: "tipoMovimentacao", text: "Ajuste Entrada" },
-        { value: "tipoMovimentacao", text: "Ajuste Saída" },
+        { value: "idCompra", text: "Compra" },
+        { value: "idVenda", text: "Venda" },
+        { value: "idDevolucao", text: "Devolução" },
+        { value: "idAjusteEntrada", text: "Ajuste Entrada" },
+        { value: "idAjusteSaida", text: "Ajuste Saída" },
       ],
     };
   },
@@ -147,6 +152,7 @@ export default {
       try {
         const { data } = await http.get("/produto");
         this.produto = data;
+        console.log(this.produto);
         return data;
       } catch (error) {
         console.log(error);
@@ -162,6 +168,12 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+
+    async saveMovimentacaoEstoque() {
+      console.log(this.dadosMovEstoque.id_produto);
+      // const { data } = await http.post("/movestoque");
+      // return data;
     },
   },
   mounted() {
