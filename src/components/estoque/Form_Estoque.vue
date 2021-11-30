@@ -108,7 +108,10 @@
                       </b-col>
 
                       <b-col col md="12" lg="4" xl="2">
-                        <b-button class="col-md-12 mt-2" size="sm"
+                        <b-button
+                          class="col-md-12 mt-2"
+                          size="sm"
+                          @click="limparCampos"
                           >Novo</b-button
                         >
                       </b-col>
