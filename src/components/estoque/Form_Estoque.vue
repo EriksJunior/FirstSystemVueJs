@@ -70,7 +70,10 @@
                         <!-- Modal fornecedor -->
                         <ModalFornecedor
                           class="mr-2"
-                          @pegarTodosFornecedores="pegarDadosFornecedor"
+                          @getModalSuppliersFromInventory="pegarDadosFornecedor"
+                          @deleteModalSuppliersFromInventory="
+                            pegarDadosFornecedor
+                          "
                         />
                         <!-- Modal fornecedor -->
                       </div>
@@ -200,6 +203,9 @@ export default {
   mounted() {
     this.dadosProduto();
     this.pegarDadosFornecedor();
+  },
+  watch: {
+    pegarDadosFornecedor() {},
   },
 };
 </script>

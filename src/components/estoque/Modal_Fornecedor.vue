@@ -257,7 +257,7 @@ export default {
         alert("Fornecedor Salvo com sucesso");
         this.limparDadosFornecedor();
         this.pegarDadosFornecedor();
-        this.$emit("pegarTodosFornecedores", true);
+        this.$emit("getModalSuppliersFromInventory");
         return data;
       } catch (error) {
         console.log(error);
@@ -278,6 +278,7 @@ export default {
         console.log(data);
         alert("Fornecedor deletado com sucesso!");
         this.pegarDadosFornecedor();
+        this.$emit("deleteModalSuppliersFromInventory");
         return data;
       } catch (error) {
         console.log(error);
