@@ -146,7 +146,7 @@ export default {
       dadosMovEstoque: {
         id: "",
         id_produto: "",
-        id_fornecedor: "",
+        id_fornecedor: "" || null,
         quantidade: "",
         numero_nfe: "",
         tipo_movimentacao: "",
@@ -189,12 +189,11 @@ export default {
     async saveMovimentacaoEstoque() {
       try {
         const { data } = await http.post("/movestoque", this.dadosMovEstoque);
-        console.log(this.dadosMovEstoque);
         this.limparCampos();
         alert("Movimentação salva com sucesso!");
         return data;
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
       }
     },
   },
