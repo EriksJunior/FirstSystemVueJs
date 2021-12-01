@@ -63,8 +63,7 @@ export default {
   methods: {
     async pesquisarTodasMovimentacoes() {
       const { data } = await http.get("/movestoque");
-
-      console.og(data);
+      console.log(data);
       return data;
     },
   },
