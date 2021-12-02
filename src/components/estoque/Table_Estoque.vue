@@ -27,7 +27,7 @@
                   icon="check-square-fill"
                   scale="2"
                   variant="success"
-                  @click="updateMovInventory(movEstoque.id)"
+                  @click="selectMovInventoryById(movEstoque.id)"
                 ></b-icon>
               </td>
               <td>
@@ -74,9 +74,9 @@ export default {
       console.log(this.listMovEstoque);
       return data;
     },
-    async updateMovInventory(idMovInventory) {
+    async selectMovInventoryById(idMovInventory) {
       try {
-        const { data } = await http.put(`/movestoque/${idMovInventory}`);
+        const { data } = await http.get(`/movestoque/${idMovInventory}`);
         console.log(data);
         return data;
       } catch (error) {
