@@ -15,18 +15,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Nome Produto</td>
-              <td>Quantidade</td>
-              <td>N° NFe</td>
-              <td>Tipo Movimentação</td>
-              <td>Nome Fornecedor</td>
+            <tr v-for="movEstoque in listMovEstoque" :key="movEstoque.id">
+              <td>{{ movEstoque.produto.nome }}</td>
+              <td>{{ movEstoque.quantidade }}</td>
+              <td>{{ movEstoque.numero_nfe }}</td>
+              <td>{{ movEstoque.tipo_movimentacao }}</td>
+              <td>{{ movEstoque.fornecedor.razao_social }}</td>
               <td>
                 <b-icon
                   class="icones ml-3"
                   icon="check-square-fill"
                   scale="2"
                   variant="success"
+                  @click="updateMovInventory(movEstoque.id)"
                 ></b-icon>
               </td>
               <td>
@@ -35,6 +36,7 @@
                   icon="x-square-fill"
                   scale="2"
                   variant="danger"
+                  @click="deleteMovInventory(movEstoque.id)"
                 ></b-icon>
               </td>
             </tr>
@@ -55,18 +57,48 @@
 <script>
 import { http } from "../../config/config";
 export default {
+  // props: {
+  //   saveMovimentacaoEstoque: {
+  //     type: Object,
+  //   },
+  // },
   data() {
     return {
-      dadosDaTablea: [],
+      listMovEstoque: [],
     };
   },
   methods: {
     async pesquisarTodasMovimentacoes() {
       const { data } = await http.get("/movestoque");
-      console.log(data);
+      this.listMovEstoque = data;
+      console.log(this.listMovEstoque);
       return data;
     },
+    async updateMovInventory(idMovInventory) {
+      try {
+        // const { data } = await http.update(`/movestoque/${idMovInventory}`);
+        console.log(idMovInventory);
+        // return data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async deleteMovInventory(idMovInventory) {
+      try {
+        const { data } = await http.delete(`/movestoque/${idMovInventory}`);
+        console.log(data);
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
+  // watch: {
+  //   pesquisarTodasMovimentacoes() {
+  //     this.saveMovimentacaoEstoque;
+  //     console.log("teste");
+  //   },
+  // },
 };
 </script>
 

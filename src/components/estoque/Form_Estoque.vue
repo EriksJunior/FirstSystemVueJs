@@ -74,6 +74,9 @@
                           @deleteModalSuppliersFromInventory="
                             pegarDadosFornecedor
                           "
+                          @updateModalSuppliersFromInventory="
+                            pegarDadosFornecedor
+                          "
                         />
                         <!-- Modal fornecedor -->
                       </div>
@@ -146,10 +149,11 @@ export default {
   },
   data() {
     return {
+      // dadosTabelaMovEstoque: {},
       dadosMovEstoque: {
         id: "",
         id_produto: "",
-        id_fornecedor: "" || null,
+        id_fornecedor: "" || "",
         quantidade: "",
         numero_nfe: "",
         tipo_movimentacao: "",
@@ -194,6 +198,8 @@ export default {
         const { data } = await http.post("/movestoque", this.dadosMovEstoque);
         this.limparCampos();
         alert("Movimentação salva com sucesso!");
+        this.dadosTabelaMovEstoque = data;
+        // this.$emit("saveMovimentacaoEstoque", this.dadosTabelaMovEstoque);
         return data;
       } catch (error) {
         console.log(error.response.data);

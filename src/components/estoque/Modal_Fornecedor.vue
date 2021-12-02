@@ -267,6 +267,7 @@ export default {
       try {
         const { data } = await http.get(`/fornecedor/${idFornecedor}`);
         Object.assign(this.infoFornecedor, data);
+        this.$emit("updateModalSuppliersFromInventory");
         return data;
       } catch (error) {
         console.log(error);
