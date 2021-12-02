@@ -76,9 +76,9 @@ export default {
     },
     async updateMovInventory(idMovInventory) {
       try {
-        // const { data } = await http.update(`/movestoque/${idMovInventory}`);
-        console.log(idMovInventory);
-        // return data;
+        const { data } = await http.put(`/movestoque/${idMovInventory}`);
+        console.log(data);
+        return data;
       } catch (error) {
         console.log(error);
       }
