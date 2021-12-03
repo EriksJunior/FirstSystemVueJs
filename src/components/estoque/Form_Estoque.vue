@@ -177,7 +177,6 @@ export default {
         (this.dadosMovEstoque.quantidade = ""),
         (this.dadosMovEstoque.numero_nfe = ""),
         (this.dadosMovEstoque.tipoMov = "");
-      this.teste();
     },
     async dadosProduto() {
       try {
@@ -187,10 +186,6 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    },
-
-    teste() {
-      console.log(this.testeOvo);
     },
 
     async pegarDadosFornecedor() {
