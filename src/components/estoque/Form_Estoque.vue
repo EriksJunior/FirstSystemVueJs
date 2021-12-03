@@ -209,6 +209,16 @@ export default {
         console.log(error.response.data);
       }
     },
+
+    async updateMovEstoque() {
+      const { data } = await http.put(
+        `/movestoque/${this.dadosMovEstoque.id}`,
+        this.dadosMovEstoque
+      );
+      console.log(data);
+      alert("Movimentação atualizada com sucesso!");
+      return data;
+    },
   },
   mounted() {
     this.dadosProduto();
@@ -216,6 +226,14 @@ export default {
   },
   watch: {
     pegarDadosFornecedor() {},
+    dataTable() {
+      (this.dadosMovEstoque.id = this.dataTable.id),
+        (this.dadosMovEstoque.id_produto = this.dataTable.id_produto),
+        (this.dadosMovEstoque.id_fornecedor = this.dataTable.id_fornecedor),
+        (this.dadosMovEstoque.quantidade = this.dataTable.quantidade),
+        (this.dadosMovEstoque.numero_nfe = this.dataTable.numero_nfe),
+        (this.dadosMovEstoque.tipoMov = this.dataTable.tipoMov);
+    },
   },
 };
 </script>
