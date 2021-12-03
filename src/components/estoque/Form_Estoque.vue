@@ -128,7 +128,7 @@
             </b-tab>
             <b-tab title="Pesquisar">
               <div id="positionTable">
-                <TableEstoque />
+                <TableEstoque @tableDataForStock="dataTable = $event" />
               </div>
             </b-tab>
           </b-tabs>
@@ -149,7 +149,7 @@ export default {
   },
   data() {
     return {
-      // dadosTabelaMovEstoque: {},
+      dataTable: {},
       dadosMovEstoque: {
         id: "",
         id_produto: "",
@@ -177,6 +177,7 @@ export default {
         (this.dadosMovEstoque.quantidade = ""),
         (this.dadosMovEstoque.numero_nfe = ""),
         (this.dadosMovEstoque.tipoMov = "");
+      this.teste();
     },
     async dadosProduto() {
       try {
@@ -186,6 +187,10 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+
+    teste() {
+      console.log(this.testeOvo);
     },
 
     async pegarDadosFornecedor() {

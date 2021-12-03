@@ -78,6 +78,7 @@ export default {
       try {
         const { data } = await http.get(`/movestoque/${idMovInventory}`);
         console.log(data);
+        this.$emit("tableDataForStock", data);
         return data;
       } catch (error) {
         console.log(error);
