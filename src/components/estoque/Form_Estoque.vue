@@ -6,8 +6,8 @@
       </h1>
       <div id="cardGeral">
         <b-card no-body>
-          <b-tabs card>
-            <b-tab title="Momentação Estoque" active>
+          <b-tabs card v-model="tabIndex">
+            <b-tab title="Movimentação Estoque" active>
               <div id="cardEstoque">
                 <b-card-text>
                   <form class="row">
@@ -127,9 +127,11 @@
               </div>
             </b-tab>
             <b-tab title="Pesquisar">
-              <div id="positionTable">
-                <TableEstoque @tableDataForStock="dataTable = $event" />
-              </div>
+              <b-card-text>
+                <div id="positionTable">
+                  <TableEstoque @tableDataForStock="dataTable = $event" />
+                </div>
+              </b-card-text>
             </b-tab>
           </b-tabs>
         </b-card>
@@ -149,6 +151,7 @@ export default {
   },
   data() {
     return {
+      tabIndex: 1,
       dataTable: {},
       dadosMovEstoque: {
         id: "",
@@ -170,6 +173,9 @@ export default {
     };
   },
   methods: {
+    indexPage() {
+      this.tabIndex--;
+    },
     limparCampos() {
       (this.dadosMovEstoque.id = ""),
         (this.dadosMovEstoque.id_produto = ""),
@@ -241,6 +247,7 @@ export default {
         (this.dadosMovEstoque.quantidade = this.dataTable.quantidade),
         (this.dadosMovEstoque.numero_nfe = this.dataTable.numero_nfe),
         (this.dadosMovEstoque.tipoMov = this.dataTable.tipoMov);
+      this.indexPage();
     },
   },
 };
