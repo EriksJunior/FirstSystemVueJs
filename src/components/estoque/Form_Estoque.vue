@@ -176,7 +176,7 @@ export default {
         (this.dadosMovEstoque.id_fornecedor = ""),
         (this.dadosMovEstoque.quantidade = ""),
         (this.dadosMovEstoque.numero_nfe = ""),
-        (this.dadosMovEstoque.tipoMov = "");
+        (this.dadosMovEstoque.tipo_movimentacao = "");
     },
     async dadosProduto() {
       try {
@@ -200,6 +200,11 @@ export default {
 
     async saveMovimentacaoEstoque() {
       try {
+        if (this.dadosMovEstoque.id !== "") {
+          this.updateMovEstoque();
+          alert("Movimentação atualizada com sucesso!");
+          return;
+        }
         const { data } = await http.post("/movestoque", this.dadosMovEstoque);
         alert("Movimentação salva com sucesso!");
         this.dadosTabelaMovEstoque = data;
@@ -211,13 +216,16 @@ export default {
     },
 
     async updateMovEstoque() {
-      const { data } = await http.put(
-        `/movestoque/${this.dadosMovEstoque.id}`,
-        this.dadosMovEstoque
-      );
-      console.log(data);
-      alert("Movimentação atualizada com sucesso!");
-      return data;
+      try {
+        const { data } = await http.put(
+          `/movestoque/${this.dadosMovEstoque.id}`,
+          this.dadosMovEstoque
+        );
+        console.log(data);
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
   mounted() {
