@@ -10,7 +10,7 @@
             <b-tab title="Momentação Estoque" active>
               <div id="cardEstoque">
                 <b-card-text>
-                  <form class="row" ref="resetForm" @submit="limparCampos">
+                  <form class="row">
                     <div class="form-group col-md-4 col-sm-4 col-lg-4 col-xl-3">
                       <b-form-group label="Produto">
                         <b-form-select hidden v-model="dadosMovEstoque.id">
@@ -171,7 +171,12 @@ export default {
   },
   methods: {
     limparCampos() {
-      this.$refs.resetForm.reset();
+      (this.dadosMovEstoque.id = ""),
+        (this.dadosMovEstoque.id_produto = ""),
+        (this.dadosMovEstoque.id_fornecedor = ""),
+        (this.dadosMovEstoque.quantidade = ""),
+        (this.dadosMovEstoque.numero_nfe = ""),
+        (this.dadosMovEstoque.tipoMov = "");
     },
     async dadosProduto() {
       try {
@@ -196,10 +201,9 @@ export default {
     async saveMovimentacaoEstoque() {
       try {
         const { data } = await http.post("/movestoque", this.dadosMovEstoque);
-        this.limparCampos();
         alert("Movimentação salva com sucesso!");
         this.dadosTabelaMovEstoque = data;
-        // this.$emit("saveMovimentacaoEstoque", this.dadosTabelaMovEstoque);
+        this.limparCampos();
         return data;
       } catch (error) {
         console.log(error.response.data);

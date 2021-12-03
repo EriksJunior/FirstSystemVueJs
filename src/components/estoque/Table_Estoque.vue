@@ -87,18 +87,15 @@ export default {
       try {
         const { data } = await http.delete(`/movestoque/${idMovInventory}`);
         console.log(data);
+        alert("Movimentação deletada com sucesso!");
+        this.pesquisarTodasMovimentacoes();
         return data;
       } catch (error) {
         console.log(error);
       }
     },
   },
-  // watch: {
-  //   pesquisarTodasMovimentacoes() {
-  //     this.saveMovimentacaoEstoque;
-  //     console.log("teste");
-  //   },
-  // },
+  watch: {},
 };
 </script>
 
