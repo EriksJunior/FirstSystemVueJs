@@ -223,6 +223,7 @@ export default {
         alert("Movimentação salva com sucesso!");
         this.dadosTabelaMovEstoque = data;
         this.limparCampos();
+        this.listagemEstoque = true;
         return data;
       } catch (error) {
         console.log(error.response.data);
