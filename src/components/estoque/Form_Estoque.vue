@@ -129,7 +129,13 @@
             <b-tab title="Pesquisar">
               <b-card-text>
                 <div id="positionTable">
-                  <TableEstoque @tableDataForStock="dataTable = $event" />
+                  <TableEstoque
+                    @tableDataForStock="dataTable = $event"
+                    :atualizarListagemEstoque="listagemEstoque"
+                    @atualizarListagemEstoqueParaComponentePai="
+                      listagemEstoque = $event
+                    "
+                  />
                 </div>
               </b-card-text>
             </b-tab>
@@ -151,6 +157,7 @@ export default {
   },
   data() {
     return {
+      listagemEstoque: false,
       tabIndex: 1,
       dataTable: {},
       dadosMovEstoque: {
@@ -208,6 +215,7 @@ export default {
       try {
         if (this.dadosMovEstoque.id !== "") {
           this.updateMovEstoque();
+          this.limparCampos();
           alert("Movimentação atualizada com sucesso!");
           return;
         }
@@ -227,7 +235,7 @@ export default {
           `/movestoque/${this.dadosMovEstoque.id}`,
           this.dadosMovEstoque
         );
-        console.log(data);
+        this.listagemEstoque = true;
         return data;
       } catch (error) {
         console.log(error);

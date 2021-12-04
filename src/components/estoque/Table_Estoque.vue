@@ -57,11 +57,11 @@
 <script>
 import { http } from "../../config/config";
 export default {
-  // props: {
-  //   saveMovimentacaoEstoque: {
-  //     type: Object,
-  //   },
-  // },
+  props: {
+    atualizarListagemEstoque: {
+      type: Boolean,
+    },
+  },
   data() {
     return {
       listMovEstoque: [],
@@ -71,7 +71,8 @@ export default {
     async pesquisarTodasMovimentacoes() {
       const { data } = await http.get("/movestoque");
       this.listMovEstoque = data;
-      console.log(this.listMovEstoque);
+      Object.assign(data, this.listMovEstoque);
+      this.$emit("atualizarListagemEstoqueParaComponentePai", false);
       return data;
     },
     async selectMovInventoryById(idMovInventory) {
@@ -96,7 +97,11 @@ export default {
       }
     },
   },
-  watch: {},
+  watch: {
+    atualizarListagemEstoque() {
+      this.pesquisarTodasMovimentacoes();
+    },
+  },
 };
 </script>
 
