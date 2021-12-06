@@ -37,6 +37,7 @@
               <b-form-input
                 class="col-sm-12"
                 size="sm"
+                disabled
                 placeholder="Quantidade"
                 v-model="dadosProdutos.quantidade"
               ></b-form-input>
@@ -160,7 +161,6 @@ export default {
         id: "",
         nome: "",
         marca: "" || null,
-        quantidade: "" || null,
         preco_custo: "" || null,
         preco_venda: "" || null,
         categoria: "" || null,
@@ -187,7 +187,6 @@ export default {
       (this.dadosProdutos.id = ""),
         (this.dadosProdutos.nome = ""),
         (this.dadosProdutos.marca = ""),
-        (this.dadosProdutos.quantidade = ""),
         (this.dadosProdutos.preco_custo = ""),
         (this.dadosProdutos.preco_venda = ""),
         (this.dadosProdutos.categoria = ""),
