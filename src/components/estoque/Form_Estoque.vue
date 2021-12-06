@@ -6,8 +6,8 @@
       </h1>
       <div id="cardGeral">
         <b-card no-body>
-          <b-tabs card>
-            <b-tab title="Momentação Estoque" active>
+          <b-tabs card v-model="tabIndex">
+            <b-tab title="Movimentação Estoque" active>
               <div id="cardEstoque">
                 <b-card-text>
                   <form class="row">
@@ -127,9 +127,17 @@
               </div>
             </b-tab>
             <b-tab title="Pesquisar">
-              <div id="positionTable">
-                <TableEstoque @tableDataForStock="dataTable = $event" />
-              </div>
+              <b-card-text>
+                <div id="positionTable">
+                  <TableEstoque
+                    @tableDataForStock="dataTable = $event"
+                    :atualizarListagemEstoque="listagemEstoque"
+                    @atualizarListagemEstoqueParaComponentePai="
+                      listagemEstoque = $event
+                    "
+                  />
+                </div>
+              </b-card-text>
             </b-tab>
           </b-tabs>
         </b-card>
@@ -149,6 +157,8 @@ export default {
   },
   data() {
     return {
+      listagemEstoque: false,
+      tabIndex: 1,
       dataTable: {},
       dadosMovEstoque: {
         id: "",
@@ -170,6 +180,9 @@ export default {
     };
   },
   methods: {
+    indexPage() {
+      this.tabIndex--;
+    },
     limparCampos() {
       (this.dadosMovEstoque.id = ""),
         (this.dadosMovEstoque.id_produto = ""),
@@ -202,6 +215,7 @@ export default {
       try {
         if (this.dadosMovEstoque.id !== "") {
           this.updateMovEstoque();
+          this.limparCampos();
           alert("Movimentação atualizada com sucesso!");
           return;
         }
@@ -209,6 +223,7 @@ export default {
         alert("Movimentação salva com sucesso!");
         this.dadosTabelaMovEstoque = data;
         this.limparCampos();
+        this.listagemEstoque = true;
         return data;
       } catch (error) {
         console.log(error.response.data);
@@ -221,7 +236,7 @@ export default {
           `/movestoque/${this.dadosMovEstoque.id}`,
           this.dadosMovEstoque
         );
-        console.log(data);
+        this.listagemEstoque = true;
         return data;
       } catch (error) {
         console.log(error);
@@ -241,6 +256,7 @@ export default {
         (this.dadosMovEstoque.quantidade = this.dataTable.quantidade),
         (this.dadosMovEstoque.numero_nfe = this.dataTable.numero_nfe),
         (this.dadosMovEstoque.tipoMov = this.dataTable.tipoMov);
+      this.indexPage();
     },
   },
 };
