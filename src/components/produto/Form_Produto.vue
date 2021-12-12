@@ -37,6 +37,7 @@
               <b-form-input
                 class="col-sm-12"
                 size="sm"
+                disabled
                 placeholder="Quantidade"
                 v-model="dadosProdutos.quantidade"
               ></b-form-input>

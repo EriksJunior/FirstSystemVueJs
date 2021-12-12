@@ -77,6 +77,7 @@ export default {
   methods: {
     async editProduto(idProduto) {
       const { data } = await http.get(`/produto/${idProduto}`);
+      console.log(data);
       this.$emit("dadosParaFormProduto", data);
       return data;
     },
