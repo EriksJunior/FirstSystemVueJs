@@ -8,7 +8,6 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Nome produto</th>
-              <th scope="col">Quantidade</th>
               <th scope="col">Data de cadastro</th>
               <th scope="col">Preço de custo</th>
               <th scope="col">Editar</th>
@@ -24,26 +23,23 @@
                 {{ produto.nome }}
               </td>
               <td>
-                {{ produto.quantidade }}
-              </td>
-              <td>
                 {{ produto.data_cadastro }}
               </td>
               <td>
                 {{ produto.preco_custo }}
               </td>
-              <td style="text-align: center">
+              <td>
                 <b-icon
-                  class="icones"
+                  class="icones ml-3"
                   icon="check-square-fill"
                   scale="2"
                   variant="success"
                   @click="editProduto(produto.id)"
                 ></b-icon>
               </td>
-              <td style="text-align: center">
+              <td>
                 <b-icon
-                  class="icones"
+                  class="icones ml-3"
                   icon="x-square-fill"
                   scale="2"
                   variant="danger"
