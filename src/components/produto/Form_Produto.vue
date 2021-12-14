@@ -39,7 +39,7 @@
                 size="sm"
                 disabled
                 placeholder="Quantidade"
-                v-model="dadosProdutos.quantidade"
+                v-model="quantidade"
               ></b-form-input>
             </b-form-group>
           </div>
@@ -157,6 +157,7 @@ export default {
   },
   data() {
     return {
+      quantidade: "",
       dadosProdutos: {
         id: "",
         nome: "",
@@ -183,16 +184,19 @@ export default {
         console.log(error);
       }
     },
+
     limparDados() {
       (this.dadosProdutos.id = ""),
         (this.dadosProdutos.nome = ""),
         (this.dadosProdutos.marca = ""),
+        (this.dadosProdutos.quantidade = ""),
         (this.dadosProdutos.preco_custo = ""),
         (this.dadosProdutos.preco_venda = ""),
         (this.dadosProdutos.categoria = ""),
         (this.dadosProdutos.data_cadastro = ""),
         (this.dadosProdutos.obs = "");
     },
+
     async saveProduto() {
       try {
         if (this.dadosProdutos.id !== "") {
@@ -209,6 +213,7 @@ export default {
         console.log(error);
       }
     },
+
     async getProduto() {
       try {
         const { data } = await http.get("/produto");
@@ -218,13 +223,20 @@ export default {
         console.log(error);
       }
     },
+
+    async getStockProductsById(idProduto) {
+      const { data } = await http.get(`/produto/estoqueTotal/${idProduto}`);
+      this.quantidade = data[0].quantidadeTotal;
+      console.log(data);
+      return data;
+    },
   },
   watch: {
     dadosProdutoTabela() {
       Object.assign(this.dadosProdutos, this.dadosProdutoTabela);
       this.dadosProdutos.data_cadastro =
         this.dadosProdutoTabela.data_cadastro.split("T")[0];
-        
+      this.getStockProductsById(this.dadosProdutos.id);
     },
     updateTableForm() {
       this.getProduto();

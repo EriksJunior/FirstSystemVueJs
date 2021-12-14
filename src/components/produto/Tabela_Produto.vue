@@ -73,20 +73,12 @@ export default {
   methods: {
     async editProduto(idProduto) {
       const { data } = await http.get(`/produto/${idProduto}`);
-      console.log(data);
       this.$emit("dadosParaFormProduto", data);
-      this.getStockProductsById(idProduto);
       return data;
     },
     async deleteProduto(idProduto) {
       const { data } = await http.delete(`/produto/${idProduto}`);
       this.$emit("updateTable", this.eventUpdateTable);
-      return data;
-    },
-
-    async getStockProductsById(idProduto) {
-      const { data } = await http.get(`/produto/estoqueTotal/${idProduto}`);
-      console.log(data);
       return data;
     },
   },
