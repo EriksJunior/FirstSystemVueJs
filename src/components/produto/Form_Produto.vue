@@ -189,7 +189,7 @@ export default {
       (this.dadosProdutos.id = ""),
         (this.dadosProdutos.nome = ""),
         (this.dadosProdutos.marca = ""),
-        (this.dadosProdutos.quantidade = ""),
+        (this.quantidade = ""),
         (this.dadosProdutos.preco_custo = ""),
         (this.dadosProdutos.preco_venda = ""),
         (this.dadosProdutos.categoria = ""),
@@ -226,8 +226,8 @@ export default {
 
     async getStockProductsById(idProduto) {
       const { data } = await http.get(`/produto/estoqueTotal/${idProduto}`);
-      this.quantidade = data[0].quantidadeTotal;
-      console.log(data);
+      this.quantidade = data[0][0].quantidadeTotal;
+      console.log(data[0]);
       return data;
     },
   },
