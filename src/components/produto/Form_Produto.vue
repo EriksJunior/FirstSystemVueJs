@@ -224,6 +224,7 @@ export default {
       Object.assign(this.dadosProdutos, this.dadosProdutoTabela);
       this.dadosProdutos.data_cadastro =
         this.dadosProdutoTabela.data_cadastro.split("T")[0];
+        
     },
     updateTableForm() {
       this.getProduto();
