@@ -78,7 +78,7 @@ export default {
     async selectMovInventoryById(idMovInventory) {
       try {
         const { data } = await http.get(`/movestoque/${idMovInventory}`);
-        console.log(data);
+        console.log(idMovInventory);
         this.$emit("tableDataForStock", data);
         return data;
       } catch (error) {
