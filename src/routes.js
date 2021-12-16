@@ -4,6 +4,7 @@ import Cliente from './components/cliente/index-cliente'
 import Produto from './components/produto/index-produto'
 import Home from './components/home/index_home'
 import Estoque from './components/estoque/index_estoque'
+import Venda from './components/venda/index_venda'
 Vue.use(Router)
 
 const routes = [
@@ -22,6 +23,10 @@ const routes = [
     {
         path: '/estoque',
         component: Estoque
+    },
+    {
+        path: '/venda',
+        component: Venda
     },
 ]
 
