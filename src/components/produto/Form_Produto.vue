@@ -227,7 +227,7 @@ export default {
     async getStockProductsById(idProduto) {
       const { data } = await http.get(`/produto/estoqueTotal/${idProduto}`);
       this.quantidade = data[0][0].quantidadeTotal;
-      console.log(data[0]);
+      console.log(data);
       return data;
     },
   },

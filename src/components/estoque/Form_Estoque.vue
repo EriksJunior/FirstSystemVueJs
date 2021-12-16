@@ -130,11 +130,11 @@
               <b-card-text>
                 <div id="positionTable">
                   <TableEstoque
-                    @tableDataForStock="dataTable = $event"
                     :atualizarListagemEstoque="listagemEstoque"
                     @atualizarListagemEstoqueParaComponentePai="
                       listagemEstoque = $event
                     "
+                    @tableDataForStock="dataTable = $event"
                   />
                 </div>
               </b-card-text>
@@ -221,7 +221,6 @@ export default {
         }
         const { data } = await http.post("/movestoque", this.dadosMovEstoque);
         alert("Movimentação salva com sucesso!");
-        this.dadosTabelaMovEstoque = data;
         this.limparCampos();
         this.listagemEstoque = true;
         return data;
@@ -255,7 +254,8 @@ export default {
         (this.dadosMovEstoque.id_fornecedor = this.dataTable.id_fornecedor),
         (this.dadosMovEstoque.quantidade = this.dataTable.quantidade),
         (this.dadosMovEstoque.numero_nfe = this.dataTable.numero_nfe),
-        (this.dadosMovEstoque.tipoMov = this.dataTable.tipoMov);
+        (this.dadosMovEstoque.tipo_movimentacao =
+          this.dataTable.tipo_movimentacao);
       this.indexPage();
     },
   },
