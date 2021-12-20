@@ -5,12 +5,18 @@
         <b-tabs card>
           <b-tab title="Venda" active>
             <b-card-text>
-              <b-form-row>
+              <b-form-row
+                class="
+                  col-sm-12 col-md-12 col-lg-12 col-xl-12
+                  d-flex
+                  justify-content-between
+                "
+              >
                 <div class="form-group col-sm-4">
                   <b-form-group label="Produto">
                     <b-form-select hidden> </b-form-select>
                     <b-form-select
-                      class="col-xl-11"
+                      class="col-xl-12"
                       size="sm"
                       value-field="id"
                       text-field="nome"
@@ -18,6 +24,52 @@
                     >
                     </b-form-select>
                   </b-form-group>
+                </div>
+
+                <div class="form-group col-md-5 col-sm-12 col-lg-5 col-xl-2">
+                  <b-form-group label="Quantidade">
+                    <b-form-input
+                      placeholder="Quantidade"
+                      class="col-sm-12"
+                      size="sm"
+                    ></b-form-input>
+                  </b-form-group>
+                </div>
+
+                <div class="form-group col-md-7 col-sm-4 col-lg-5 col-xl-2">
+                  <b-form-group label="Valor">
+                    <b-form-input
+                      placeholder="Valor"
+                      class="col-sm-12"
+                      size="sm"
+                    ></b-form-input>
+                  </b-form-group>
+                </div>
+
+                <div class="form-group col-md-7 col-sm-4 col-lg-5 col-xl-1">
+                  <b-form-group label="Unidade">
+                    <b-form-input
+                      placeholder="UND"
+                      class="col-sm-12"
+                      size="sm"
+                    ></b-form-input>
+                  </b-form-group>
+                </div>
+
+                <div
+                  class="form-group col-md-7 col-sm-4 col-lg-5 col-xl-1 mt-4"
+                >
+                  <b-button variant="success" size="sm" class="m-2"
+                    >Adicionar</b-button
+                  >
+                </div>
+
+                <div
+                  class="form-group col-md-7 col-sm-4 col-lg-5 col-xl-1 mt-4"
+                >
+                  <b-button variant="info" size="sm" class="m-2"
+                    >Limpar</b-button
+                  >
                 </div>
               </b-form-row>
             </b-card-text>
@@ -32,15 +84,22 @@
 </template>
 
 <script>
+import { http } from "../../config/config";
 export default {
   data() {
     return {
-      produto: [
-        {
-          nome: "teste",
-        },
-      ],
+      produto: [{}],
     };
+  },
+  methods: {
+    async getProducts() {
+      const { data } = await http.get("/produto");
+      this.produto = data;
+      console.log(this.produto);
+    },
+  },
+  created() {
+    this.getProducts();
   },
 };
 </script>
