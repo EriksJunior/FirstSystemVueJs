@@ -8,14 +8,20 @@
               <b-form-row
                 class="col-sm-12 col-md-12 col-lg-12 col-xl-12 d-flex"
               >
-                <div class="d-flex col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                  <div class="d-flex col-xl-6">
+                <div
+                  class="
+                    d-flex
+                    justify-content-between
+                    col-sm-12 col-md-12 col-lg-12 col-xl-12
+                  "
+                >
+                  <div class="col-xl-3">
                     <b-form-group>
                       <b-form-input size="sm" type="date"></b-form-input>
                     </b-form-group>
                   </div>
 
-                  <div class="d-flex justify-content-end col-xl-6">
+                  <div class="d-flex">
                     <b-form-radio name="venda">Venda</b-form-radio>
                     <b-form-radio name="venda" class="ml-3"
                       >Orçamento</b-form-radio
@@ -31,7 +37,7 @@
                     mt-5
                   "
                 >
-                  <div class="form-group col-sm-3 col-md-3 col-lg-3 col-xl-4">
+                  <div class="form-group col-sm-8 col-md-8 col-lg-8 col-xl-8">
                     <b-form-group label="Cliente">
                       <b-form-select
                         class="col-xl-12"
@@ -44,10 +50,10 @@
                     </b-form-group>
                   </div>
 
-                  <div class="form-group col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                  <div class="form-group col-sm-5 col-md-5 col-lg-4 col-xl-4">
                     <b-form-group label="Data da entrega">
                       <b-form-input
-                        class="col-sm-12"
+                        class="col-sm-12 col-xl-12"
                         size="sm"
                         type="date"
                       ></b-form-input>
