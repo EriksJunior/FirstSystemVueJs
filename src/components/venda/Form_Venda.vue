@@ -8,17 +8,19 @@
               <b-form-row
                 class="col-sm-12 col-md-12 col-lg-12 col-xl-12 d-flex"
               >
-                <div
-                  class="
-                    d-flex
-                    justify-content-end
-                    col-sm-12 col-md-12 col-lg-12 col-xl-12
-                  "
-                >
-                  <b-form-radio name="venda">Venda</b-form-radio>
-                  <b-form-radio name="venda" class="ml-3"
-                    >Orçamento</b-form-radio
-                  >
+                <div class="d-flex col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                  <div class="d-flex col-xl-6">
+                    <b-form-group>
+                      <b-form-input size="sm" type="date"></b-form-input>
+                    </b-form-group>
+                  </div>
+
+                  <div class="d-flex justify-content-end col-xl-6">
+                    <b-form-radio name="venda">Venda</b-form-radio>
+                    <b-form-radio name="venda" class="ml-3"
+                      >Orçamento</b-form-radio
+                    >
+                  </div>
                 </div>
 
                 <div
@@ -42,21 +44,9 @@
                     </b-form-group>
                   </div>
 
-                  <div class="form-group col-sm-4 col-md-3 col-lg-4 col-xl-3">
-                    <b-form-group label="Data da venda">
-                      <b-form-input
-                        placeholder="Valor"
-                        class="col-xl-12"
-                        size="sm"
-                        type="date"
-                      ></b-form-input>
-                    </b-form-group>
-                  </div>
-
                   <div class="form-group col-sm-3 col-md-3 col-lg-3 col-xl-3">
                     <b-form-group label="Data da entrega">
                       <b-form-input
-                        placeholder="Valor"
                         class="col-sm-12"
                         size="sm"
                         type="date"
