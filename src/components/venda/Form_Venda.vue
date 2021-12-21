@@ -21,39 +21,48 @@
                   >
                 </div>
 
-                <div class="form-group col-sm-3 col-md-3 col-lg-3 col-xl-4">
-                  <b-form-group label="Cliente">
-                    <b-form-select
-                      class="col-xl-12"
-                      size="sm"
-                      text-field="nome"
-                      value-field="id"
-                      :options="nomeCliente"
-                    >
-                    </b-form-select>
-                  </b-form-group>
-                </div>
+                <div
+                  class="
+                    form-group
+                    col-sm-12 col-md-12 col-lg-12 col-xl-12
+                    d-flex
+                    mt-5
+                  "
+                >
+                  <div class="form-group col-sm-3 col-md-3 col-lg-3 col-xl-4">
+                    <b-form-group label="Cliente">
+                      <b-form-select
+                        class="col-xl-12"
+                        size="sm"
+                        text-field="nome"
+                        value-field="id"
+                        :options="nomeCliente"
+                      >
+                      </b-form-select>
+                    </b-form-group>
+                  </div>
 
-                <div class="form-group col-sm-4 col-md-3 col-lg-4 col-xl-3">
-                  <b-form-group label="Data da venda">
-                    <b-form-input
-                      placeholder="Valor"
-                      class="col-xl-12"
-                      size="sm"
-                      type="date"
-                    ></b-form-input>
-                  </b-form-group>
-                </div>
+                  <div class="form-group col-sm-4 col-md-3 col-lg-4 col-xl-3">
+                    <b-form-group label="Data da venda">
+                      <b-form-input
+                        placeholder="Valor"
+                        class="col-xl-12"
+                        size="sm"
+                        type="date"
+                      ></b-form-input>
+                    </b-form-group>
+                  </div>
 
-                <div class="form-group col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                  <b-form-group label="Data da entrega">
-                    <b-form-input
-                      placeholder="Valor"
-                      class="col-sm-12"
-                      size="sm"
-                      type="date"
-                    ></b-form-input>
-                  </b-form-group>
+                  <div class="form-group col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                    <b-form-group label="Data da entrega">
+                      <b-form-input
+                        placeholder="Valor"
+                        class="col-sm-12"
+                        size="sm"
+                        type="date"
+                      ></b-form-input>
+                    </b-form-group>
+                  </div>
                 </div>
               </b-form-row>
             </b-card-text>
