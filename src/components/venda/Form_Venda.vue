@@ -6,70 +6,54 @@
           <b-tab title="Venda" active>
             <b-card-text>
               <b-form-row
-                class="
-                  col-sm-12 col-md-12 col-lg-12 col-xl-12
-                  d-flex
-                  justify-content-between
-                "
+                class="col-sm-12 col-md-12 col-lg-12 col-xl-12 d-flex"
               >
-                <div class="form-group col-sm-4">
-                  <b-form-group label="Produto">
-                    <b-form-select hidden> </b-form-select>
+                <div
+                  class="
+                    d-flex
+                    justify-content-end
+                    col-sm-12 col-md-12 col-lg-12 col-xl-12
+                  "
+                >
+                  <b-form-radio name="venda">Venda</b-form-radio>
+                  <b-form-radio name="venda" class="ml-3"
+                    >Orçamento</b-form-radio
+                  >
+                </div>
+
+                <div class="form-group col-sm-3 col-md-3 col-lg-3 col-xl-4">
+                  <b-form-group label="Cliente">
                     <b-form-select
                       class="col-xl-12"
                       size="sm"
-                      value-field="id"
                       text-field="nome"
-                      :options="produto"
+                      value-field="id"
+                      :options="nomeCliente"
                     >
                     </b-form-select>
                   </b-form-group>
                 </div>
 
-                <div class="form-group col-md-5 col-sm-12 col-lg-5 col-xl-2">
-                  <b-form-group label="Quantidade">
+                <div class="form-group col-sm-4 col-md-3 col-lg-4 col-xl-3">
+                  <b-form-group label="Data da venda">
                     <b-form-input
-                      placeholder="Quantidade"
-                      class="col-sm-12"
+                      placeholder="Valor"
+                      class="col-xl-12"
                       size="sm"
+                      type="date"
                     ></b-form-input>
                   </b-form-group>
                 </div>
 
-                <div class="form-group col-md-7 col-sm-4 col-lg-5 col-xl-2">
-                  <b-form-group label="Valor">
+                <div class="form-group col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                  <b-form-group label="Data da entrega">
                     <b-form-input
                       placeholder="Valor"
                       class="col-sm-12"
                       size="sm"
+                      type="date"
                     ></b-form-input>
                   </b-form-group>
-                </div>
-
-                <div class="form-group col-md-7 col-sm-4 col-lg-5 col-xl-1">
-                  <b-form-group label="Unidade">
-                    <b-form-input
-                      placeholder="UND"
-                      class="col-sm-12"
-                      size="sm"
-                    ></b-form-input>
-                  </b-form-group>
-                </div>
-
-                <div
-                  class="form-group col-md-7 col-sm-4 col-lg-5 col-xl-1 mt-4"
-                >
-                  <b-button variant="success" size="sm" class="m-2"
-                    >Adicionar</b-button
-                  >
-                </div>
-
-                <div
-                  class="form-group col-md-7 col-sm-4 col-lg-5 col-xl-1 mt-4"
-                >
-                  <b-button variant="info" size="sm" class="m-2"
-                    >Limpar</b-button
-                  >
                 </div>
               </b-form-row>
             </b-card-text>
@@ -88,18 +72,18 @@ import { http } from "../../config/config";
 export default {
   data() {
     return {
-      produto: [{}],
+      nomeCliente: [],
     };
   },
   methods: {
-    async getProducts() {
-      const { data } = await http.get("/produto");
-      this.produto = data;
-      console.log(this.produto);
+    async getCliente() {
+      const { data } = await http.get("/cliente");
+      this.nomeCliente = data;
+      return data;
     },
   },
   created() {
-    this.getProducts();
+    this.getCliente();
   },
 };
 </script>
