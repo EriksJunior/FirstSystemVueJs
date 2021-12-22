@@ -11,7 +11,7 @@
               animation="spin-pulse"
             ></b-icon>
             <b-icon v-else icon="plus-square-fill" variant="info"></b-icon>
-            Selecionar Produto
+            Adicionar Produto
           </p>
         </template>
       </b-navbar-toggle>
