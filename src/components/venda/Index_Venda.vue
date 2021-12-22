@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import FormVenda from "../venda/Form_Venda.vue";
+import FormVenda from "./Form_Venda.vue";
 export default {
   components: {
     FormVenda,
