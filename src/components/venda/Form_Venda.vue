@@ -45,7 +45,7 @@
                         size="sm"
                         text-field="nome"
                         value-field="id"
-                        :options="nomeCliente"
+                        :options="dadosVenda.nomeCliente"
                       >
                       </b-form-select>
                     </b-form-group>
@@ -87,19 +87,28 @@ export default {
   },
   data() {
     return {
-      nomeCliente: [],
-      nomeProduto: [
-        {
-          nome: "teste",
-          value: "id",
-        },
-      ],
+      dadosVenda: {
+        id_venda: "",
+        nomeCliente: {},
+        tipoVenda: "",
+        data_venda: "",
+        data_entrega: "",
+        nomeProduto: [
+          {
+            nome: "teste",
+            value: "id",
+          },
+        ],
+        quantidade: "",
+        valor: "",
+        unidade: "",
+      },
     };
   },
   methods: {
     async getCliente() {
       const { data } = await http.get("/cliente");
-      this.nomeCliente = data;
+      this.dadosVenda.nomeCliente = data;
       return data;
     },
   },
