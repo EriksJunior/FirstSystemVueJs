@@ -63,6 +63,7 @@
                 >
               </div>
             </form>
+            <TabelaProdutoVenda />
           </b-card>
         </b-navbar-nav>
       </b-collapse>
@@ -72,7 +73,11 @@
 
 <script>
 import { http } from "../../config/config";
+import TabelaProdutoVenda from "./TabelaProduto_Venda.vue";
 export default {
+  components: {
+    TabelaProdutoVenda,
+  },
   data() {
     return {
       nomeProduto: [

@@ -2,31 +2,34 @@
   <div id="containerTabelaProduto">
     <div>
       <div id="tabelaDeProduto">
-        <h1 style="color: white">Pesquisa</h1>
         <table class="table table-dark">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">Cod</th>
               <th scope="col">Nome produto</th>
-              <th scope="col">Data de cadastro</th>
-              <th scope="col">Preço de custo</th>
+              <th scope="col">Quantidade</th>
+              <th scope="col">Valor Unitario</th>
+              <th scope="col">Valor Total</th>
               <th scope="col">Editar</th>
               <th scope="col">Excluir</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="produto in dadosProduto" :key="produto.id">
+            <tr>
               <td>
-                {{ produto.id }}
+                <p>1</p>
               </td>
               <td>
-                {{ produto.nome }}
+                <p>Nome produto</p>
               </td>
               <td>
-                {{ produto.data_cadastro }}
+                <p>5</p>
               </td>
               <td>
-                {{ produto.preco_custo }}
+                <p>1.000,00</p>
+              </td>
+              <td>
+                <p>5.000,00</p>
               </td>
               <td>
                 <b-icon
@@ -34,7 +37,6 @@
                   icon="check-square-fill"
                   scale="2"
                   variant="success"
-                  @click="editProduto(produto.id)"
                 ></b-icon>
               </td>
               <td>
@@ -43,7 +45,6 @@
                   icon="x-square-fill"
                   scale="2"
                   variant="danger"
-                  @click="deleteProduto(produto.id)"
                 ></b-icon>
               </td>
             </tr>
@@ -55,7 +56,7 @@
 </template>
 
 <script>
-import { http } from "../../config/config";
+// import { http } from "../../config/config";
 
 export default {
   props: {
@@ -70,19 +71,7 @@ export default {
   data() {
     return {};
   },
-  methods: {
-    async editProduto(idProduto) {
-      const { data } = await http.get(`/produto/${idProduto}`);
-      this.$emit("dadosParaFormProduto", data);
-      console.log(data);
-      return data;
-    },
-    async deleteProduto(idProduto) {
-      const { data } = await http.delete(`/produto/${idProduto}`);
-      this.$emit("updateTable", this.eventUpdateTable);
-      return data;
-    },
-  },
+  methods: {},
   watch: {},
 };
 </script>
