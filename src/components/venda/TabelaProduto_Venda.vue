@@ -1,7 +1,7 @@
 <template>
-  <div id="containerTabelaProduto">
+  <div id="containerTabelaProdutoVenda">
     <div>
-      <div id="tabelaDeProduto">
+      <div>
         <table class="table table-dark">
           <thead>
             <tr>
@@ -77,14 +77,9 @@ export default {
 </script>
 
 <style>
-#containerTabelaProduto {
-  width: 90%;
-  margin: 0 auto;
-  padding-top: 50px;
-}
-
-#tabelaDeProduto {
+#containerTabelaProdutoVenda {
   width: 100%;
+  padding-top: 50px;
 }
 
 th {

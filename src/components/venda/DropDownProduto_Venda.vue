@@ -1,5 +1,5 @@
 <template>
-  <div class="form-group dadosProduto col-sm-12 col-md-12 col-lg-12 col-xl-12">
+  <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
     <b-navbar toggleable>
       <b-navbar-toggle target="navbar-toggle-collapse" id="navBarStyle">
         <template #default="{ expanded }">
