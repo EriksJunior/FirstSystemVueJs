@@ -62,7 +62,7 @@
                   </div>
                 </div>
 
-                <FromProduto />
+                <DropDownProduto />
               </b-form-row>
             </b-card-text>
           </b-tab>
@@ -80,10 +80,10 @@
 
 <script>
 import { http } from "../../config/config";
-import FromProduto from "../venda/Form_Produto.vue";
+import DropDownProduto from "./DropDownProduto_Venda.vue";
 export default {
   components: {
-    FromProduto,
+    DropDownProduto,
   },
   data() {
     return {
