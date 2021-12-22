@@ -16,7 +16,8 @@
                   "
                 >
                   <div class="col-xl-3">
-                    <b-form-group>
+                    <b-form-group label="Data da venda">
+                      <b-form-input size="sm" hidden></b-form-input>
                       <b-form-input size="sm" type="date"></b-form-input>
                     </b-form-group>
                   </div>
@@ -34,7 +35,7 @@
                     form-group
                     col-sm-12 col-md-12 col-lg-12 col-xl-12
                     d-flex
-                    mt-5
+                    mt-2
                   "
                 >
                   <div class="form-group col-sm-8 col-md-8 col-lg-8 col-xl-8">
@@ -60,9 +61,64 @@
                     </b-form-group>
                   </div>
                 </div>
+
+                <div
+                  class="
+                    form-group
+                    dadosProduto
+                    col-sm-12 col-md-12 col-lg-12 col-xl-12
+                  "
+                >
+                  <b-navbar toggleable>
+                    <b-navbar-toggle target="navbar-toggle-collapse" id="teste">
+                      <template #default="{ expanded }">
+                        <p>
+                          <b-icon
+                            v-if="expanded"
+                            icon="plus-circle-fill"
+                            variant="danger"
+                            animation="spin-pulse"
+                          ></b-icon>
+                          <b-icon
+                            v-else
+                            icon="plus-square-fill"
+                            variant="info"
+                          ></b-icon>
+                          Selecionar Produto
+                        </p>
+                      </template>
+                    </b-navbar-toggle>
+
+                    <b-collapse id="navbar-toggle-collapse" is-nav>
+                      <b-navbar-nav class="ml-auto">
+                        <b-card
+                          bg-variant="light"
+                          text-variant="dark"
+                          class="mt-2"
+                        >
+                          <div class="mt-3">
+                            <b-form-group label="Produto">
+                              <b-form-select
+                                class="col-sm-5 col-md-5 col-lg-5 col-xl-5"
+                                size="sm"
+                                text-field="nome"
+                                value-field="id"
+                                :options="nomeProduto"
+                              >
+                              </b-form-select>
+                            </b-form-group>
+                          </div>
+                        </b-card>
+                      </b-navbar-nav>
+                    </b-collapse>
+                  </b-navbar>
+                </div>
               </b-form-row>
             </b-card-text>
           </b-tab>
+
+          <b-tab title="N° da venda: 4566" disabled> </b-tab>
+
           <b-tab title="Pesquisa">
             <b-card-text>Tab contents 2</b-card-text>
           </b-tab>
@@ -78,6 +134,12 @@ export default {
   data() {
     return {
       nomeCliente: [],
+      nomeProduto: [
+        {
+          nome: "teste",
+          value: "id",
+        },
+      ],
     };
   },
   methods: {
@@ -103,5 +165,9 @@ export default {
 #tabContainer {
   width: 80%;
   margin: 0 auto;
+}
+
+#teste {
+  border: none !important;
 }
 </style>
