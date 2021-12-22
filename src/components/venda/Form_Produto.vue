@@ -18,19 +18,51 @@
 
       <b-collapse id="navbar-toggle-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
-          <b-card bg-variant="light" text-variant="dark" class="mt-2">
-            <div class="mt-3">
-              <b-form-group label="Produto">
-                <b-form-select
-                  class="col-sm-5 col-md-5 col-lg-5 col-xl-5"
+          <b-card
+            bg-variant="light"
+            text-variant="dark"
+            class="mt-2 col-md-12 col-sm-12 col-lg-12 col-xl-12"
+          >
+            <form class="row">
+              <div class="col-md-6 col-sm-6 col-lg-6 col-xl-4">
+                <b-form-group label="Produto">
+                  <b-form-select
+                    size="sm"
+                    text-field="nome"
+                    value-field="id"
+                    :options="nomeProduto"
+                  >
+                  </b-form-select>
+                </b-form-group>
+              </div>
+
+              <div class="col-md-6 col-sm-6 col-lg-6 col-xl-2">
+                <b-form-group label="Quantidade">
+                  <b-form-input class="col-sm-12" size="sm"></b-form-input>
+                </b-form-group>
+              </div>
+
+              <div class="col-md-6 col-sm-6 col-lg-6 col-xl-2">
+                <b-form-group label="Valor unitario">
+                  <b-form-input class="col-sm-12" size="sm"></b-form-input>
+                </b-form-group>
+              </div>
+
+              <div class="col-md-6 col-sm-6 col-lg-6 col-xl-2">
+                <b-form-group label="Unidade">
+                  <b-form-input class="col-sm-12" size="sm"></b-form-input>
+                </b-form-group>
+              </div>
+
+              <div class="col-md-6 col-sm-6 col-lg-6 col-xl-2 mt-3">
+                <b-button
+                  variant="success"
+                  class="col-md-6 col-sm-6 col-lg-6 col-xl-10 mt-3"
                   size="sm"
-                  text-field="nome"
-                  value-field="id"
-                  :options="nomeProduto"
+                  >Adicionar</b-button
                 >
-                </b-form-select>
-              </b-form-group>
-            </div>
+              </div>
+            </form>
           </b-card>
         </b-navbar-nav>
       </b-collapse>
