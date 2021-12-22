@@ -1,97 +1,40 @@
 <template>
-  <div id="cardContainer">
-    <div id="tabContainer">
-      <b-card no-body>
-        <b-tabs card>
-          <b-tab title="Venda" active>
-            <b-card-text>
-              <b-form-row
-                class="
-                  col-sm-12 col-md-12 col-lg-12 col-xl-12
-                  d-flex
-                  justify-content-between
-                "
-              >
-                <div class="form-group col-sm-4">
-                  <b-form-group label="Produto">
-                    <b-form-select hidden> </b-form-select>
-                    <b-form-select
-                      class="col-xl-12"
-                      size="sm"
-                      value-field="id"
-                      text-field="nome"
-                      :options="produto"
-                      v-model="dadosVenda.produto"
-                    >
-                    </b-form-select>
-                  </b-form-group>
-                </div>
+  <div class="form-group dadosProduto col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <b-navbar toggleable>
+      <b-navbar-toggle target="navbar-toggle-collapse" id="navBarStyle">
+        <template #default="{ expanded }">
+          <p>
+            <b-icon
+              v-if="expanded"
+              icon="plus-circle-fill"
+              variant="danger"
+              animation="spin-pulse"
+            ></b-icon>
+            <b-icon v-else icon="plus-square-fill" variant="info"></b-icon>
+            Selecionar Produto
+          </p>
+        </template>
+      </b-navbar-toggle>
 
-                <div class="form-group col-md-5 col-sm-12 col-lg-5 col-xl-2">
-                  <b-form-group label="Quantidade">
-                    <b-form-input
-                      placeholder="Quantidade"
-                      class="col-sm-12"
-                      size="sm"
-                      v-model="dadosVenda.quantidade"
-                    ></b-form-input>
-                  </b-form-group>
-                </div>
-
-                <div class="form-group col-md-7 col-sm-4 col-lg-5 col-xl-2">
-                  <b-form-group label="Valor">
-                    <b-form-input
-                      placeholder="Valor"
-                      class="col-sm-12"
-                      size="sm"
-                      v-model="dadosVenda.valor"
-                    ></b-form-input>
-                  </b-form-group>
-                </div>
-
-                <div class="form-group col-md-7 col-sm-4 col-lg-5 col-xl-1">
-                  <b-form-group label="Unidade">
-                    <b-form-input
-                      placeholder="UND"
-                      class="col-sm-12"
-                      size="sm"
-                      v-model="dadosVenda.unidade"
-                    ></b-form-input>
-                  </b-form-group>
-                </div>
-
-                <div
-                  class="form-group col-md-7 col-sm-4 col-lg-5 col-xl-1 mt-4"
+      <b-collapse id="navbar-toggle-collapse" is-nav>
+        <b-navbar-nav class="ml-auto">
+          <b-card bg-variant="light" text-variant="dark" class="mt-2">
+            <div class="mt-3">
+              <b-form-group label="Produto">
+                <b-form-select
+                  class="col-sm-5 col-md-5 col-lg-5 col-xl-5"
+                  size="sm"
+                  text-field="nome"
+                  value-field="id"
+                  :options="nomeProduto"
                 >
-                  <b-button
-                    @click="adicionarProdutoVendas"
-                    variant="success"
-                    size="sm"
-                    class="m-2"
-                    >Adicionar</b-button
-                  >
-                </div>
-
-                <div
-                  class="form-group col-md-7 col-sm-4 col-lg-5 col-xl-1 mt-4"
-                >
-                  <b-button
-                    variant="info"
-                    size="sm"
-                    class="m-2"
-                    @click="clearVenda"
-                    >Limpar</b-button
-                  >
-                </div>
-              </b-form-row>
-            </b-card-text>
-          </b-tab>
-          <b-tab title="Pesquisa">
-            <b-card-text>Tab contents 2</b-card-text>
-          </b-tab>
-        </b-tabs>
-      </b-card>
-    </div>
+                </b-form-select>
+              </b-form-group>
+            </div>
+          </b-card>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
   </div>
 </template>
 
@@ -100,13 +43,12 @@ import { http } from "../../config/config";
 export default {
   data() {
     return {
-      produto: [{}],
-      dadosVenda: {
-        produto: "",
-        quantidade: 0,
-        valor: 0,
-        unidade: "",
-      },
+      nomeProduto: [
+        {
+          nome: "teste",
+          value: "id",
+        },
+      ],
     };
   },
   methods: {
@@ -143,5 +85,9 @@ export default {
 #tabContainer {
   width: 80%;
   margin: 0 auto;
+}
+
+#navBarStyle {
+  border: none !important;
 }
 </style>

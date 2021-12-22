@@ -62,57 +62,7 @@
                   </div>
                 </div>
 
-                <div
-                  class="
-                    form-group
-                    dadosProduto
-                    col-sm-12 col-md-12 col-lg-12 col-xl-12
-                  "
-                >
-                  <b-navbar toggleable>
-                    <b-navbar-toggle target="navbar-toggle-collapse" id="teste">
-                      <template #default="{ expanded }">
-                        <p>
-                          <b-icon
-                            v-if="expanded"
-                            icon="plus-circle-fill"
-                            variant="danger"
-                            animation="spin-pulse"
-                          ></b-icon>
-                          <b-icon
-                            v-else
-                            icon="plus-square-fill"
-                            variant="info"
-                          ></b-icon>
-                          Selecionar Produto
-                        </p>
-                      </template>
-                    </b-navbar-toggle>
-
-                    <b-collapse id="navbar-toggle-collapse" is-nav>
-                      <b-navbar-nav class="ml-auto">
-                        <b-card
-                          bg-variant="light"
-                          text-variant="dark"
-                          class="mt-2"
-                        >
-                          <div class="mt-3">
-                            <b-form-group label="Produto">
-                              <b-form-select
-                                class="col-sm-5 col-md-5 col-lg-5 col-xl-5"
-                                size="sm"
-                                text-field="nome"
-                                value-field="id"
-                                :options="nomeProduto"
-                              >
-                              </b-form-select>
-                            </b-form-group>
-                          </div>
-                        </b-card>
-                      </b-navbar-nav>
-                    </b-collapse>
-                  </b-navbar>
-                </div>
+                <FromProduto />
               </b-form-row>
             </b-card-text>
           </b-tab>
@@ -130,7 +80,11 @@
 
 <script>
 import { http } from "../../config/config";
+import FromProduto from "../venda/Form_Produto.vue";
 export default {
+  components: {
+    FromProduto,
+  },
   data() {
     return {
       nomeCliente: [],
@@ -165,9 +119,5 @@ export default {
 #tabContainer {
   width: 80%;
   margin: 0 auto;
-}
-
-#teste {
-  border: none !important;
 }
 </style>
