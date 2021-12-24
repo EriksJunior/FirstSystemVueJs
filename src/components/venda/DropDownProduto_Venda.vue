@@ -30,7 +30,7 @@
                     size="sm"
                     text-field="nome"
                     value-field="id"
-                    :options="nomeProduto"
+                    :options="dadosProdutoVenda"
                   >
                   </b-form-select>
                 </b-form-group>
@@ -63,7 +63,7 @@
                 >
               </div>
             </form>
-            <TabelaProdutoVenda />
+            <TabelaProdutoVenda :dadosProduto="dadosProdutoVenda" />
           </b-card>
         </b-navbar-nav>
       </b-collapse>
@@ -80,12 +80,7 @@ export default {
   },
   data() {
     return {
-      nomeProduto: [
-        {
-          nome: "teste",
-          value: "id",
-        },
-      ],
+      dadosProdutoVenda: [],
     };
   },
   methods: {
@@ -97,13 +92,12 @@ export default {
     },
     async getProducts() {
       const { data } = await http.get("/produto");
-      this.produto = data;
-      console.log(this.produto);
+      this.dadosProdutoVenda = data;
+      return data;
     },
 
     async adicionarProdutoVendas() {
       // const { data } = await http.post("/vendas", this.dadosVenda);
-      console.log(this.dadosVenda);
     },
   },
   created() {
@@ -112,7 +106,7 @@ export default {
 };
 </script>
 
-<style scopet>
+<style >
 #cardContainer {
   width: 100%;
   height: 88.6vh;

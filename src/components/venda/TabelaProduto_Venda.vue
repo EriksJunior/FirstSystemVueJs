@@ -37,6 +37,7 @@
                   icon="check-square-fill"
                   scale="2"
                   variant="success"
+                  @click="teste"
                 ></b-icon>
               </td>
               <td>
@@ -71,8 +72,11 @@ export default {
   data() {
     return {};
   },
-  methods: {},
-  watch: {},
+  methods: {
+    teste() {
+      console.log(this.dadosProduto, "merdaaaDOIS");
+    },
+  },
 };
 </script>
 

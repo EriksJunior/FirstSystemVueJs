@@ -17,14 +17,27 @@
                 >
                   <div class="col-xl-3">
                     <b-form-group label="Data da venda">
-                      <b-form-input size="sm" hidden></b-form-input>
-                      <b-form-input size="sm" type="date"></b-form-input>
+                      <b-form-input
+                        size="sm"
+                        hidden
+                        v-model="dadosVenda.id_venda"
+                      ></b-form-input>
+                      <b-form-input
+                        size="sm"
+                        type="date"
+                        v-model="dadosVenda.data_venda"
+                      ></b-form-input>
                     </b-form-group>
                   </div>
 
                   <div class="d-flex">
-                    <b-form-radio name="venda">Venda</b-form-radio>
-                    <b-form-radio name="venda" class="ml-3"
+                    <b-form-radio name="venda" v-model="dadosVenda.tipoVenda"
+                      >Venda</b-form-radio
+                    >
+                    <b-form-radio
+                      name="venda"
+                      v-model="dadosVenda.tipoVenda"
+                      class="ml-3"
                       >Orçamento</b-form-radio
                     >
                   </div>
@@ -57,6 +70,7 @@
                         class="col-sm-12 col-xl-12"
                         size="sm"
                         type="date"
+                        v-model="dadosVenda.data_entrega"
                       ></b-form-input>
                     </b-form-group>
                   </div>
@@ -67,7 +81,8 @@
             </b-card-text>
           </b-tab>
 
-          <b-tab title="N° da venda: 4566" disabled> </b-tab>
+          <b-tab :title="`N° da venda: ${dadosVenda.id_venda}`" disabled>
+          </b-tab>
 
           <b-tab title="Pesquisa">
             <b-card-text>Tab contents 2</b-card-text>
@@ -88,20 +103,12 @@ export default {
   data() {
     return {
       dadosVenda: {
-        id_venda: "",
+        id_venda: "564545",
         nomeCliente: {},
         tipoVenda: "",
         data_venda: "",
         data_entrega: "",
-        nomeProduto: [
-          {
-            nome: "teste",
-            value: "id",
-          },
-        ],
-        quantidade: "",
-        valor: "",
-        unidade: "",
+        nomeProdutoVenda: [],
       },
     };
   },
