@@ -62,7 +62,7 @@
 export default {
   props: {
     dadosProduto: {
-      type: Array,
+      type: Object,
     },
     eventUpdateTable: {
       type: Boolean,

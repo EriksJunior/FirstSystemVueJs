@@ -30,7 +30,8 @@
                     size="sm"
                     text-field="nome"
                     value-field="id"
-                    :options="dadosProdutoVenda"
+                    :options="produto"
+                    v-model="dadosProduto.id_produto"
                   >
                   </b-form-select>
                 </b-form-group>
@@ -38,19 +39,31 @@
 
               <div class="col-md-6 col-sm-6 col-lg-6 col-xl-2">
                 <b-form-group label="Quantidade">
-                  <b-form-input class="col-sm-12" size="sm"></b-form-input>
+                  <b-form-input
+                    class="col-sm-12"
+                    size="sm"
+                    v-model="dadosProduto.quantidade"
+                  ></b-form-input>
                 </b-form-group>
               </div>
 
               <div class="col-md-6 col-sm-6 col-lg-6 col-xl-2">
                 <b-form-group label="Valor unitario">
-                  <b-form-input class="col-sm-12" size="sm"></b-form-input>
+                  <b-form-input
+                    class="col-sm-12"
+                    size="sm"
+                    v-model="dadosProduto.valor"
+                  ></b-form-input>
                 </b-form-group>
               </div>
 
               <div class="col-md-6 col-sm-6 col-lg-6 col-xl-2">
                 <b-form-group label="Unidade">
-                  <b-form-input class="col-sm-12" size="sm"></b-form-input>
+                  <b-form-input
+                    class="col-sm-12"
+                    size="sm"
+                    v-model="dadosProduto.unidade"
+                  ></b-form-input>
                 </b-form-group>
               </div>
 
@@ -59,11 +72,12 @@
                   variant="success"
                   class="col-md-6 col-sm-6 col-lg-6 col-xl-10 mt-3"
                   size="sm"
+                  @click="adicionarProduto"
                   >Adicionar</b-button
                 >
               </div>
             </form>
-            <TabelaProdutoVenda :dadosProduto="dadosProdutoVenda" />
+            <TabelaProdutoVenda :dadosProduto="dadosProduto" />
           </b-card>
         </b-navbar-nav>
       </b-collapse>
@@ -80,7 +94,13 @@ export default {
   },
   data() {
     return {
-      dadosProdutoVenda: [],
+      produto: [],
+      dadosProduto: {
+        id_produto: "",
+        quantidade: "",
+        valor: "",
+        unidade: "",
+      },
     };
   },
   methods: {
@@ -92,12 +112,12 @@ export default {
     },
     async getProducts() {
       const { data } = await http.get("/produto");
-      this.dadosProdutoVenda = data;
+      this.produto = data;
       return data;
     },
 
-    async adicionarProdutoVendas() {
-      // const { data } = await http.post("/vendas", this.dadosVenda);
+    async adicionarProduto() {
+      console.log(this.dadosProduto);
     },
   },
   created() {
