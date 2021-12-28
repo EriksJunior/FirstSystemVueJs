@@ -61,7 +61,7 @@
 
 export default {
   props: {
-    dadosProduto: {
+    dadosProdutovenda: {
       type: Object,
     },
     eventUpdateTable: {
@@ -74,7 +74,7 @@ export default {
   },
   methods: {
     teste() {
-      console.log(this.dadosProduto, "merdaaaDOIS");
+      console.log(this.dadosProdutoVenda, "merdaaaDOIS");
     },
   },
 };

@@ -97,8 +97,7 @@
             </b-card-text>
           </b-tab>
 
-          <b-tab :title="`N° da venda: ${dadosVenda.id_venda}`" disabled>
-          </b-tab>
+          <b-tab :title="`N° da venda: ${dadosVenda.id}`" disabled> </b-tab>
 
           <b-tab title="Pesquisa">
             <b-card-text>Tab contents 2</b-card-text>
@@ -138,11 +137,16 @@ export default {
 
     async saveVenda() {
       try {
-        console.log(this.dadosVenda);
-        const { data } = await http.post("/venda", this.dadosVenda);
-        this.dadosVenda.id = data.id;
-        alert("mov salvaaa");
-        return data;
+        if (this.dadosVenda.id === "") {
+          console.log(this.dadosVenda);
+          const { data } = await http.post("/venda", this.dadosVenda);
+          this.dadosVenda.id = data.id;
+          alert("mov salvaaa");
+          return data;
+        } else if (this.dadosVenda.id !== "") {
+          alert("Ja tem id ai pourra");
+          return;
+        }
       } catch (error) {
         console.log(error);
       }

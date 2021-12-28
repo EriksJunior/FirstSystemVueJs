@@ -31,7 +31,7 @@
                     text-field="nome"
                     value-field="id"
                     :options="produto"
-                    v-model="dadosProduto.id_produto"
+                    v-model="dadosProdutoVenda.id_produto"
                   >
                   </b-form-select>
                 </b-form-group>
@@ -42,7 +42,7 @@
                   <b-form-input
                     class="col-sm-12"
                     size="sm"
-                    v-model="dadosProduto.quantidade"
+                    v-model="dadosProdutoVenda.quantidade"
                   ></b-form-input>
                 </b-form-group>
               </div>
@@ -52,7 +52,7 @@
                   <b-form-input
                     class="col-sm-12"
                     size="sm"
-                    v-model="dadosProduto.valor"
+                    v-model="dadosProdutoVenda.valor"
                   ></b-form-input>
                 </b-form-group>
               </div>
@@ -62,7 +62,7 @@
                   <b-form-input
                     class="col-sm-12"
                     size="sm"
-                    v-model="dadosProduto.unidade"
+                    v-model="dadosProdutoVenda.unidade"
                   ></b-form-input>
                 </b-form-group>
               </div>
@@ -77,7 +77,7 @@
                 >
               </div>
             </form>
-            <TabelaProdutoVenda :dadosProduto="dadosProduto" />
+            <TabelaProdutoVenda :dadosProdutoVenda="dadosProdutoVenda" />
           </b-card>
         </b-navbar-nav>
       </b-collapse>
@@ -95,7 +95,8 @@ export default {
   data() {
     return {
       produto: [],
-      dadosProduto: {
+      dadosProdutoVenda: {
+        id_venda: "",
         id_produto: "",
         quantidade: "",
         valor: "",
@@ -117,7 +118,7 @@ export default {
     },
 
     async adicionarProduto() {
-      console.log(this.dadosProduto);
+      console.log(this.dadosProdutoVenda);
     },
   },
   created() {
