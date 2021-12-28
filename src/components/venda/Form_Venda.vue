@@ -34,13 +34,13 @@
                     <b-form-radio
                       name="venda"
                       value="Venda"
-                      v-model="dadosVenda.tipoVenda"
+                      v-model="dadosVenda.tipo_venda"
                       >Venda</b-form-radio
                     >
                     <b-form-radio
                       name="venda"
                       value="Orçamento"
-                      v-model="dadosVenda.tipoVenda"
+                      v-model="dadosVenda.tipo_venda"
                       class="ml-3"
                       >Orçamento</b-form-radio
                     >
@@ -62,7 +62,8 @@
                         size="sm"
                         text-field="nome"
                         value-field="id"
-                        :options="dadosVenda.nomeCliente"
+                        :options="nomeCliente"
+                        v-model="dadosVenda.id_cliente"
                       >
                       </b-form-select>
                     </b-form-group>
@@ -117,20 +118,21 @@ export default {
   },
   data() {
     return {
+      nomeCliente: {},
+      nomeProdutoVenda: [],
       dadosVenda: {
         id: "",
-        nomeCliente: {},
-        tipoVenda: "",
+        id_cliente: "",
+        tipo_venda: "",
         data_venda: "",
         data_entrega: "",
-        nomeProdutoVenda: [],
       },
     };
   },
   methods: {
     async getCliente() {
       const { data } = await http.get("/cliente");
-      this.dadosVenda.nomeCliente = data;
+      this.nomeCliente = data;
       return data;
     },
 
@@ -138,6 +140,8 @@ export default {
       try {
         console.log(this.dadosVenda);
         const { data } = await http.post("/venda", this.dadosVenda);
+        this.dadosVenda.id = data.id;
+        alert("mov salvaaa");
         return data;
       } catch (error) {
         console.log(error);
