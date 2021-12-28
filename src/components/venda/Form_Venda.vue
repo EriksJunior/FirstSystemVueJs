@@ -31,11 +31,15 @@
                   </div>
 
                   <div class="d-flex">
-                    <b-form-radio name="venda" v-model="dadosVenda.tipoVenda"
+                    <b-form-radio
+                      name="venda"
+                      value="Venda"
+                      v-model="dadosVenda.tipoVenda"
                       >Venda</b-form-radio
                     >
                     <b-form-radio
                       name="venda"
+                      value="Orçamento"
                       v-model="dadosVenda.tipoVenda"
                       class="ml-3"
                       >Orçamento</b-form-radio
@@ -77,6 +81,17 @@
                 </div>
 
                 <DropDownProduto />
+                <div
+                  class="
+                    col-sm-12 col-md-12 col-lg-12 col-xl-12
+                    d-flex
+                    justify-content-end
+                  "
+                >
+                  <b-button variant="success" size="sm" @click="saveVenda"
+                    >Salvar</b-button
+                  >
+                </div>
               </b-form-row>
             </b-card-text>
           </b-tab>
@@ -103,7 +118,7 @@ export default {
   data() {
     return {
       dadosVenda: {
-        id_venda: "564545",
+        id: "",
         nomeCliente: {},
         tipoVenda: "",
         data_venda: "",
@@ -117,6 +132,16 @@ export default {
       const { data } = await http.get("/cliente");
       this.dadosVenda.nomeCliente = data;
       return data;
+    },
+
+    async saveVenda() {
+      try {
+        console.log(this.dadosVenda);
+        const { data } = await http.post("/venda", this.dadosVenda);
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
   created() {
