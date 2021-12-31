@@ -96,6 +96,7 @@ export default {
     return {
       produto: [],
       dadosProdutoVenda: {
+        id: "",
         id_venda: "",
         id_produto: "",
         quantidade: "",

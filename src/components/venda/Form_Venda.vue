@@ -139,14 +139,32 @@ export default {
         if (this.dadosVenda.id === "") {
           const { data } = await http.post("/venda", this.dadosVenda);
           this.dadosVenda.id = data.id;
-          console.log(this.dadosVenda.id);
           alert("mov salvaaa");
           return data;
         } else if (this.dadosVenda.id !== "") {
-          
-          alert("Ja tem id ai pourra");
+          this.updateVenda(this.dadosVenda.id);
+          console.log(this.dadosVenda.id);
+          alert("Venda atualizada com sucesso!");
           return;
         }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async updateVenda(id) {
+      try {
+        const { data } = await http.put(`/venda/${id}`, this.dadosVenda);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async saveProdutoVenda() {
+      try {
+        const { data } = await http.post("/movVenda");
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
