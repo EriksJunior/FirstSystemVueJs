@@ -118,7 +118,6 @@ export default {
   data() {
     return {
       nomeCliente: {},
-      nomeProdutoVenda: [],
       dadosVenda: {
         id: "",
         id_cliente: "",
@@ -138,12 +137,13 @@ export default {
     async saveVenda() {
       try {
         if (this.dadosVenda.id === "") {
-          console.log(this.dadosVenda);
           const { data } = await http.post("/venda", this.dadosVenda);
           this.dadosVenda.id = data.id;
+          console.log(this.dadosVenda.id);
           alert("mov salvaaa");
           return data;
         } else if (this.dadosVenda.id !== "") {
+          
           alert("Ja tem id ai pourra");
           return;
         }
