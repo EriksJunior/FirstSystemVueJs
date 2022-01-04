@@ -92,6 +92,11 @@ export default {
   components: {
     TabelaProdutoVenda,
   },
+  props: {
+    idVenda: {
+      type: Number,
+    },
+  },
   data() {
     return {
       produto: [],
@@ -119,7 +124,9 @@ export default {
     },
 
     async adicionarProduto() {
-      console.log(this.dadosProdutoVenda);
+      this.dadosProdutoVenda.id_venda = this.idVenda;
+      const { data } = await http.post("/movVenda", this.dadosProdutoVenda);
+      console.log(data);
     },
   },
   created() {

@@ -81,7 +81,7 @@
                   </div>
                 </div>
 
-                <DropDownProduto />
+                <DropDownProduto :idVenda="dadosVenda.id" />
                 <div
                   class="
                     col-sm-12 col-md-12 col-lg-12 col-xl-12
@@ -119,7 +119,7 @@ export default {
     return {
       nomeCliente: {},
       dadosVenda: {
-        id: "",
+        id: 0,
         id_cliente: "",
         tipo_venda: "",
         data_venda: "",
@@ -136,12 +136,12 @@ export default {
 
     async saveVenda() {
       try {
-        if (this.dadosVenda.id === "") {
+        if (this.dadosVenda.id === 0) {
           const { data } = await http.post("/venda", this.dadosVenda);
           this.dadosVenda.id = data.id;
           alert("mov salvaaa");
           return data;
-        } else if (this.dadosVenda.id !== "") {
+        } else if (this.dadosVenda.id !== 0) {
           this.updateVenda(this.dadosVenda.id);
           console.log(this.dadosVenda.id);
           alert("Venda atualizada com sucesso!");
