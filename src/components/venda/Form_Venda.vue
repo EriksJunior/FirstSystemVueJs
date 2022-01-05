@@ -100,7 +100,9 @@
           <b-tab :title="`N° da venda: ${dadosVenda.id}`" disabled> </b-tab>
 
           <b-tab title="Pesquisa">
-            <b-card-text>Tab contents 2</b-card-text>
+            <b-card-text>
+              <PesquisaVenda />
+            </b-card-text>
           </b-tab>
         </b-tabs>
       </b-card>
@@ -111,9 +113,11 @@
 <script>
 import { http } from "../../config/config";
 import DropDownProduto from "./DropDownProduto_Venda.vue";
+import PesquisaVenda from "./Tabela_Venda.vue";
 export default {
   components: {
     DropDownProduto,
+    PesquisaVenda,
   },
   data() {
     return {

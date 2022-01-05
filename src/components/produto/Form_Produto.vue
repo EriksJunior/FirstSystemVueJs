@@ -218,6 +218,7 @@ export default {
       try {
         const { data } = await http.get("/produto");
         this.$emit("buscarDadosProduto", data);
+        console.log(data);
         return data;
       } catch (error) {
         console.log(error);
