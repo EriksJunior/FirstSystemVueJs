@@ -37,7 +37,7 @@
                   icon="check-square-fill"
                   scale="2"
                   variant="success"
-                  @click="teste"
+                  @click="getProductsSaleById"
                 ></b-icon>
               </td>
               <td>
@@ -57,7 +57,7 @@
 </template>
 
 <script>
-// import { http } from "../../config/config";
+import { http } from "../../config/config";
 
 export default {
   props: {
@@ -70,11 +70,17 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      productsSaleById: [],
+    };
   },
   methods: {
     teste() {
       console.log(this.dadosProdutoVenda, "merdaaaDOIS");
+    },
+    async getProductsSaleById() {
+      const { data } = await http.get(`/movVenda/`);
+      console.log(data);
     },
   },
 };
