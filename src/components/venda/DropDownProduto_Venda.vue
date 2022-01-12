@@ -77,7 +77,11 @@
                 >
               </div>
             </form>
-            <TabelaProdutoVenda :dadosProdutoVenda="dadosProdutoVenda" />
+            <TabelaProdutoVenda
+              :dadosProdutoVenda="dadosProdutoVenda"
+              :eventUpdateTable="eventProdutoByTable"
+              @resetarValor="resetarValorBoolean = $event"
+            />
           </b-card>
         </b-navbar-nav>
       </b-collapse>
@@ -99,6 +103,7 @@ export default {
   },
   data() {
     return {
+      eventProdutoByTable: true,
       produto: [],
       dadosProdutoVenda: {
         id: "",
@@ -118,15 +123,25 @@ export default {
         (this.dadosVenda.unidade = "");
     },
     async getProducts() {
-      const { data } = await http.get("/produto");
-      this.produto = data;
-      return data;
+      try {
+        const { data } = await http.get("/produto");
+        this.produto = data;
+        return data;
+      } catch (error) {
+        console.log(error.response);
+      }
     },
 
     async adicionarProduto() {
-      this.dadosProdutoVenda.id_venda = this.idVenda;
-      const { data } = await http.post("/movVenda", this.dadosProdutoVenda);
-      console.log(data);
+      try {
+        this.dadosProdutoVenda.id_venda = this.idVenda;
+        const { data } = await http.post("/movVenda", this.dadosProdutoVenda);
+        this.dadosProdutoVenda.id = data.id;
+        this.eventProdutoByTable = false;
+        console.log(this.eventProdutoByTable);
+      } catch (error) {
+        console.log(error.response);
+      }
     },
   },
   created() {

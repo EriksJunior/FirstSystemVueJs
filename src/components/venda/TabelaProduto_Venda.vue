@@ -7,6 +7,7 @@
             <tr>
               <th scope="col">Cod</th>
               <th scope="col">Nome produto</th>
+              <th scope="col">Unidade</th>
               <th scope="col">Quantidade</th>
               <th scope="col">Valor Unitario</th>
               <th scope="col">Valor Total</th>
@@ -15,21 +16,27 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr
+              v-for="dadosProdutos in productsSaleById[0]"
+              :key="dadosProdutos.id"
+            >
               <td>
-                <p>1</p>
+                {{ dadosProdutos.id_produto }}
               </td>
               <td>
-                <p>Nome produto</p>
+                {{ dadosProdutos.nome }}
               </td>
               <td>
-                <p>5</p>
+                {{ dadosProdutos.unidade }}
               </td>
               <td>
-                <p>1.000,00</p>
+                {{ dadosProdutos.quantidade }}
               </td>
               <td>
-                <p>5.000,00</p>
+                {{ dadosProdutos.valor }}
+              </td>
+              <td>
+                {{ dadosProdutos.quantidade * dadosProdutos.valor }}
               </td>
               <td>
                 <b-icon
@@ -37,7 +44,6 @@
                   icon="check-square-fill"
                   scale="2"
                   variant="success"
-                  @click="getProductsSaleById"
                 ></b-icon>
               </td>
               <td>
@@ -61,26 +67,32 @@ import { http } from "../../config/config";
 
 export default {
   props: {
-    dadosProdutovenda: {
+    dadosProdutoVenda: {
       type: Object,
     },
     eventUpdateTable: {
       type: Boolean,
-      default: true,
     },
   },
   data() {
     return {
-      productsSaleById: [],
+      productsSaleById: {},
     };
   },
   methods: {
-    teste() {
-      console.log(this.dadosProdutoVenda, "merdaaaDOIS");
-    },
     async getProductsSaleById() {
-      const { data } = await http.get(`/movVenda/`);
-      console.log(data);
+      const { data } = await http.get(
+        `/movVenda/produtoVenda/${this.dadosProdutoVenda.id_venda}`
+      );
+      this.productsSaleById = data;
+      this.$emit("resetarValorBoolean", true);
+      console.log(this.productsSaleById);
+      return data;
+    },
+  },
+  watch: {
+    eventUpdateTable() {
+      this.getProductsSaleById();
     },
   },
 };
