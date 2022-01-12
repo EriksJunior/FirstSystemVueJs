@@ -89,7 +89,7 @@
                     justify-content-end
                   "
                 >
-                  <b-button variant="success" size="sm" @click="saveVenda"
+                  <b-button variant="success" @click="saveVenda"
                     >Salvar</b-button
                   >
                 </div>

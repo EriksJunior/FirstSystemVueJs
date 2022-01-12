@@ -80,7 +80,7 @@
             <TabelaProdutoVenda
               :dadosProdutoVenda="dadosProdutoVenda"
               :eventUpdateTable="eventProdutoByTable"
-              @resetarValor="resetarValorBoolean = $event"
+              @resetarValorBoolean="eventProdutoByTable = $event"
             />
           </b-card>
         </b-navbar-nav>
@@ -138,7 +138,7 @@ export default {
         const { data } = await http.post("/movVenda", this.dadosProdutoVenda);
         this.dadosProdutoVenda.id = data.id;
         this.eventProdutoByTable = false;
-        console.log(this.eventProdutoByTable);
+        console.log(this.eventProdutoByTable, "dropdownnnnnnnnnnnnn");
       } catch (error) {
         console.log(error.response);
       }
