@@ -2,7 +2,7 @@
   <div id="containerTabelaProdutoVenda">
     <div>
       <div>
-        <table class="table table-dark">
+        <table class="table table-dark table-pesquisa">
           <thead>
             <tr>
               <th scope="col">Cod</th>
@@ -52,6 +52,7 @@
                   icon="x-square-fill"
                   scale="2"
                   variant="danger"
+                  @click="deleteProductSaleById(dadosProdutos.id)"
                 ></b-icon>
               </td>
             </tr>
@@ -87,6 +88,12 @@ export default {
       this.productsSaleById = data;
       this.$emit("resetarValorBoolean", true);
       console.log(this.productsSaleById);
+      return data;
+    },
+
+    async deleteProductSaleById(idProduct) {
+      const { data } = await http.delete(`/movVenda/${idProduct}`);
+      alert("produto Deletado com sucesso");
       return data;
     },
   },
