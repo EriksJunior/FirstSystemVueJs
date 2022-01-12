@@ -131,6 +131,8 @@
               >
             </b-col>
 
+
+
             <b-col col md="12" lg="4" xl="3">
               <b-button class="col-md-12 mt-2" size="sm" @click="limparDados"
                 >Novo</b-button
