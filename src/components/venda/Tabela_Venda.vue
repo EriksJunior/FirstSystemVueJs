@@ -31,6 +31,7 @@
                   icon="check-square-fill"
                   scale="2"
                   variant="success"
+                  @click="editSaleById(dadosVenda.id)"
                 ></b-icon>
               </td>
               <td>
@@ -72,12 +73,16 @@ export default {
       const { data } = await http.get("/venda");
       this.listVenda = data;
     },
+
+    async editSaleById(idVenda) {
+      // const { data } = await http.get(`/venda/${idVenda}`);
+      console.log(idVenda);
+    },
   },
   filters: {
     moment(value) {
       return moment(value).format("DD/MM/YYYY");
     },
-     
   },
 };
 </script>
