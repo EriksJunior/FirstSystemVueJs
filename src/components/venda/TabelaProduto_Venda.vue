@@ -87,13 +87,13 @@ export default {
       );
       this.productsSaleById = data;
       this.$emit("resetarValorBoolean", true);
-      console.log(this.productsSaleById);
       return data;
     },
 
     async deleteProductSaleById(idProduct) {
       const { data } = await http.delete(`/movVenda/${idProduct}`);
       alert("produto Deletado com sucesso");
+      this.getProductsSaleById();
       return data;
     },
   },

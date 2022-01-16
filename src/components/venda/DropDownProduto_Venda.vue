@@ -117,10 +117,10 @@ export default {
   },
   methods: {
     clearVenda() {
-      (this.dadosVenda.produto = ""),
-        (this.dadosVenda.quantidade = 0),
-        (this.dadosVenda.valor = 0),
-        (this.dadosVenda.unidade = "");
+      this.produto = [];
+      this.dadosProdutoVenda.quantidade = "";
+      this.dadosProdutoVenda.valor = "";
+      this.dadosProdutoVenda.unidade = "";
     },
     async getProducts() {
       try {
@@ -138,7 +138,8 @@ export default {
         const { data } = await http.post("/movVenda", this.dadosProdutoVenda);
         this.dadosProdutoVenda.id = data.id;
         this.eventProdutoByTable = false;
-        console.log(this.eventProdutoByTable, "dropdownnnnnnnnnnnnn");
+        this.clearVenda();
+        this.getProducts();
       } catch (error) {
         console.log(error.response);
       }
@@ -147,6 +148,7 @@ export default {
   created() {
     this.getProducts();
   },
+  watch: {},
 };
 </script>
 
