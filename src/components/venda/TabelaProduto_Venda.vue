@@ -44,6 +44,7 @@
                   icon="check-square-fill"
                   scale="2"
                   variant="success"
+                  @click="editProductById(dadosProdutos.id)"
                 ></b-icon>
               </td>
               <td>
@@ -78,6 +79,7 @@ export default {
   data() {
     return {
       productsSaleById: {},
+      productsTableEditById: {},
     };
   },
   methods: {
@@ -95,6 +97,13 @@ export default {
       alert("produto Deletado com sucesso");
       this.getProductsSaleById();
       return data;
+    },
+
+    async editProductById(idVenda) {
+      const { data } = await http.get(`/movVenda/produto/venda/${idVenda}`);
+      this.productsTableEditById = data;
+      this.$emit("productsTableEdit", this.productsTableEditById);
+      console.log(this.productsTableEditById, "Aqui pourraaaaaaaaaaaa");
     },
   },
   watch: {

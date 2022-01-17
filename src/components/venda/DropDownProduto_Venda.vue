@@ -81,6 +81,7 @@
               :dadosProdutoVenda="dadosProdutoVenda"
               :eventUpdateTable="eventProdutoByTable"
               @resetarValorBoolean="eventProdutoByTable = $event"
+              @productsTableEdit="tableProductsData = $event"
             />
           </b-card>
         </b-navbar-nav>
@@ -103,6 +104,7 @@ export default {
   },
   data() {
     return {
+      tableProductsData: {},
       eventProdutoByTable: true,
       produto: [],
       dadosProdutoVenda: {

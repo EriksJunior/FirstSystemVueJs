@@ -121,7 +121,7 @@ export default {
   },
   data() {
     return {
-      nomeCliente: {},
+      nomeCliente: [],
       dadosVenda: {
         id: 0,
         id_cliente: "",
