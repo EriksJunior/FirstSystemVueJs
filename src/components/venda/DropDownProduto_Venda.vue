@@ -82,6 +82,7 @@
               :eventUpdateTable="eventProdutoByTable"
               @resetarValorBoolean="eventProdutoByTable = $event"
               @productsTableEdit="tableProductsData = $event"
+              @eventUpdateTeste="teste = $event"
             />
           </b-card>
         </b-navbar-nav>
@@ -104,6 +105,7 @@ export default {
   },
   data() {
     return {
+      teste: false,
       tableProductsData: {},
       eventProdutoByTable: true,
       produto: [],
@@ -150,7 +152,20 @@ export default {
   created() {
     this.getProducts();
   },
-  watch: {},
+  watch: {
+    teste() {
+      this.dadosProdutoVenda.id_produto =
+        this.tableProductsData[0][0].id_produto;
+      this.dadosProdutoVenda.id = this.tableProductsData[0][0].id;
+      this.dadosProdutoVenda.id_venda = this.tableProductsData[0][0].id_venda;
+      this.dadosProdutoVenda.quantidade =
+        this.tableProductsData[0][0].quantidade;
+      this.dadosProdutoVenda.valor = this.tableProductsData[0][0].valor;
+      this.dadosProdutoVenda.unidade = this.tableProductsData[0][0].unidade;
+      this.teste = false;
+      console.log(this.tableProductsData[0][0]);
+    },
+  },
 };
 </script>
 

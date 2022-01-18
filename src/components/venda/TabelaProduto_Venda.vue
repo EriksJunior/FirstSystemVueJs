@@ -103,7 +103,7 @@ export default {
       const { data } = await http.get(`/movVenda/produto/venda/${idVenda}`);
       this.productsTableEditById = data;
       this.$emit("productsTableEdit", this.productsTableEditById);
-      console.log(this.productsTableEditById, "Aqui pourraaaaaaaaaaaa");
+      this.$emit("eventUpdateTeste", true);
     },
   },
   watch: {
