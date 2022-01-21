@@ -24,6 +24,7 @@
             class="mt-2 col-md-12 col-sm-12 col-lg-12 col-xl-12"
           >
             <form class="row">
+              <b-form hidden v-model="dadosProdutoVenda.id"> </b-form>
               <div class="col-md-6 col-sm-6 col-lg-6 col-xl-4">
                 <b-form-group label="Produto">
                   <b-form-select
@@ -123,6 +124,7 @@ export default {
     clearVenda() {
       this.produto = [];
       this.dadosProdutoVenda.quantidade = "";
+      this.dadosProdutoVenda.id = "";
       this.dadosProdutoVenda.valor = "";
       this.dadosProdutoVenda.unidade = "";
     },
@@ -138,15 +140,31 @@ export default {
 
     async adicionarProduto() {
       try {
-        this.dadosProdutoVenda.id_venda = this.idVenda;
-        const { data } = await http.post("/movVenda", this.dadosProdutoVenda);
-        this.dadosProdutoVenda.id = data.id;
-        this.eventProdutoByTable = false;
-        this.clearVenda();
-        this.getProducts();
+        if (this.dadosProdutoVenda.id !== "") {
+          this.updateProductsSaleById();
+          this.eventProdutoByTable = false;
+          this.clearVenda();
+          this.getProducts();
+
+          return;
+        } else {
+          this.dadosProdutoVenda.id_venda = this.idVenda;
+          const { data } = await http.post("/movVenda", this.dadosProdutoVenda);
+          this.dadosProdutoVenda.id = data.id;
+          this.eventProdutoByTable = false;
+          this.clearVenda();
+          this.getProducts();
+        }
       } catch (error) {
         console.log(error.response);
       }
+    },
+    async updateProductsSaleById() {
+      await http.put(
+        `/movVenda/${this.dadosProdutoVenda.id}`,
+        this.dadosProdutoVenda
+      );
+      console.log(this.dadosProdutoVenda.id, "ta aqui bucetaaaaaaaaaaaaaaaQA");
     },
   },
   created() {
@@ -163,7 +181,6 @@ export default {
       this.dadosProdutoVenda.valor = this.tableProductsData[0][0].valor;
       this.dadosProdutoVenda.unidade = this.tableProductsData[0][0].unidade;
       this.teste = false;
-      console.log(this.tableProductsData[0][0]);
     },
   },
 };
