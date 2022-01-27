@@ -2,7 +2,7 @@
   <div id="cardContainer">
     <div id="tabContainer">
       <b-card no-body>
-        <b-tabs card>
+        <b-tabs card v-model="tabIndex">
           <b-tab title="Venda" active>
             <b-card-text>
               <b-form-row
@@ -101,7 +101,10 @@
 
           <b-tab title="Pesquisa">
             <b-card-text>
-              <PesquisaVenda @dadosDaTabela="dataSaleByTable = $event" />
+              <PesquisaVenda
+                @dadosDaTabela="dataSaleByTable = $event"
+                @eventoMudarTab="tabIndex = $event"
+              />
             </b-card-text>
           </b-tab>
         </b-tabs>
@@ -116,12 +119,14 @@ import DropDownProduto from "./DropDownProduto_Venda.vue";
 import PesquisaVenda from "./Tabela_Venda.vue";
 import moment from "moment";
 export default {
+  props: {},
   components: {
     DropDownProduto,
     PesquisaVenda,
   },
   data() {
     return {
+      tabIndex: 1,
       nomeCliente: [],
       dadosVenda: {
         id: 0,
@@ -149,7 +154,6 @@ export default {
           return data;
         } else if (this.dadosVenda.id !== 0) {
           this.updateVenda(this.dadosVenda.id);
-          console.log(this.dadosVenda.id);
           alert("Venda atualizada com sucesso!");
           return;
         }
@@ -161,7 +165,7 @@ export default {
     async updateVenda(id) {
       try {
         const { data } = await http.put(`/venda/${id}`, this.dadosVenda);
-        console.log(data);
+        return data;
       } catch (error) {
         console.log(error);
       }
@@ -170,7 +174,7 @@ export default {
     async saveProdutoVenda() {
       try {
         const { data } = await http.post("/movVenda");
-        console.log(data);
+        return data;
       } catch (error) {
         console.log(error);
       }

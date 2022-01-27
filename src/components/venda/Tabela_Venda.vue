@@ -66,6 +66,7 @@ export default {
   data() {
     return {
       listVenda: [],
+      tabIndex: 0,
     };
   },
   methods: {
@@ -77,7 +78,8 @@ export default {
     async editSaleById(idVenda) {
       try {
         const { data } = await http.get(`/venda/${idVenda}`);
-        this.$emit("dadosDaTabela", data)
+        this.$emit("dadosDaTabela", data);
+        this.$emit("eventoMudarTab", this.tabIndex--);
       } catch (error) {
         console.log(error);
       }
