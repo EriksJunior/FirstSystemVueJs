@@ -69,6 +69,9 @@ import { http } from "../../config/config";
 
 export default {
   props: {
+    idVenda: {
+      type: Number,
+    },
     dadosProdutoVenda: {
       type: Object,
     },
@@ -83,10 +86,8 @@ export default {
     };
   },
   methods: {
-    async getProductsSaleById() {
-      const { data } = await http.get(
-        `/movVenda/produtoVenda/${this.dadosProdutoVenda.id_venda}`
-      );
+    async getProductsSaleById(id) {
+      const { data } = await http.get(`/movVenda/produtoVenda/${id}`);
       this.productsSaleById = data;
       this.$emit("resetarValorBoolean", true);
       return data;
@@ -95,7 +96,7 @@ export default {
     async deleteProductSaleById(idProduct) {
       const { data } = await http.delete(`/movVenda/${idProduct}`);
       alert("produto Deletado com sucesso");
-      this.getProductsSaleById();
+      this.getProductsSaleById(this.dadosProdutoVenda.id_venda);
       return data;
     },
 
@@ -108,7 +109,10 @@ export default {
   },
   watch: {
     eventUpdateTable() {
-      this.getProductsSaleById();
+      this.getProductsSaleById(this.dadosProdutoVenda.id_venda);
+    },
+    async idVenda(idVenda) {
+      await this.getProductsSaleById(idVenda);
     },
   },
 };

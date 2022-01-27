@@ -79,6 +79,7 @@
               </div>
             </form>
             <TabelaProdutoVenda
+              :idVenda="idVenda"
               :dadosProdutoVenda="dadosProdutoVenda"
               :eventUpdateTable="eventProdutoByTable"
               @resetarValorBoolean="eventProdutoByTable = $event"
@@ -164,7 +165,6 @@ export default {
         `/movVenda/${this.dadosProdutoVenda.id}`,
         this.dadosProdutoVenda
       );
-      console.log(this.dadosProdutoVenda.id, "ta aqui bucetaaaaaaaaaaaaaaaQA");
     },
   },
   created() {
