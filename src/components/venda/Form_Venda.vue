@@ -101,7 +101,7 @@
 
           <b-tab title="Pesquisa">
             <b-card-text>
-              <PesquisaVenda />
+              <PesquisaVenda @dadosDaTabela="dataSaleByTable = $event" />
             </b-card-text>
           </b-tab>
         </b-tabs>
@@ -114,6 +114,7 @@
 import { http } from "../../config/config";
 import DropDownProduto from "./DropDownProduto_Venda.vue";
 import PesquisaVenda from "./Tabela_Venda.vue";
+import moment from "moment";
 export default {
   components: {
     DropDownProduto,
@@ -129,6 +130,7 @@ export default {
         data_venda: "",
         data_entrega: "",
       },
+      dataSaleByTable: {},
     };
   },
   methods: {
@@ -176,6 +178,19 @@ export default {
   },
   created() {
     this.getCliente();
+  },
+  watch: {
+    dataSaleByTable() {
+      this.dadosVenda.id = this.dataSaleByTable.id;
+      this.dadosVenda.id_cliente = this.dataSaleByTable.id_cliente;
+      this.dadosVenda.tipo_venda = this.dataSaleByTable.tipo_venda;
+      this.dadosVenda.data_venda = moment(
+        this.dataSaleByTable.data_venda
+      ).format("YYYY-MM-DD");
+      this.dadosVenda.data_entrega = moment(
+        this.dataSaleByTable.data_entrega
+      ).format("YYYY-MM-DD");
+    },
   },
 };
 </script>

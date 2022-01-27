@@ -75,8 +75,12 @@ export default {
     },
 
     async editSaleById(idVenda) {
-      // const { data } = await http.get(`/venda/${idVenda}`);
-      console.log(idVenda);
+      try {
+        const { data } = await http.get(`/venda/${idVenda}`);
+        this.$emit("dadosDaTabela", data)
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
   filters: {
