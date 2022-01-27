@@ -91,7 +91,6 @@ export default {
   methods: {
     async editCliente(idCliente) {
       const { data } = await http.get(`/cliente/${idCliente}`);
-      console.log(data);
       this.$emit("envInfoFromForm", data);
       return data;
     },

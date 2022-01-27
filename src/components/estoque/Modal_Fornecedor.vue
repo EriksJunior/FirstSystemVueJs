@@ -276,7 +276,6 @@ export default {
     async excluirFornecedor(idFornecedor) {
       try {
         const { data } = await http.delete(`/fornecedor/${idFornecedor}`);
-        console.log(data);
         alert("Fornecedor deletado com sucesso!");
         this.pegarDadosFornecedor();
         this.$emit("deleteModalSuppliersFromInventory");
@@ -290,7 +289,6 @@ export default {
         `/fornecedor/${this.infoFornecedor.id}`,
         this.infoFornecedor
       );
-      console.log(data);
       return data;
     },
     limparDadosFornecedor() {

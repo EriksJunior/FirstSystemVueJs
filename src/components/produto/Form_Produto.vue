@@ -131,8 +131,6 @@
               >
             </b-col>
 
-
-
             <b-col col md="12" lg="4" xl="3">
               <b-button class="col-md-12 mt-2" size="sm" @click="limparDados"
                 >Novo</b-button
@@ -220,7 +218,6 @@ export default {
       try {
         const { data } = await http.get("/produto");
         this.$emit("buscarDadosProduto", data);
-        console.log(data);
         return data;
       } catch (error) {
         console.log(error);
@@ -230,7 +227,6 @@ export default {
     async getStockProductsById(idProduto) {
       const { data } = await http.get(`/produto/estoqueTotal/${idProduto}`);
       this.quantidade = data[0][0].quantidadeTotal;
-      console.log(data);
       return data;
     },
   },

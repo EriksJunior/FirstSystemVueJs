@@ -182,7 +182,6 @@ export default {
         `/cliente/${this.dadosCliente.id}`,
         this.dadosCliente
       );
-      console.log(data);
       alert("Dados do cliente atualizados com sucesso!");
       return data;
     },
@@ -195,7 +194,6 @@ export default {
         }
         const { data } = await http.post("/cliente", this.dadosCliente);
         this.id = data.id;
-        console.log(data);
         alert("Cliente salvo");
         this.limparDados();
         return data;
@@ -222,7 +220,6 @@ export default {
         this.dadosAparecerSumirTabela = false; // primeiro parametro o nome do evento, segundo o evento
         try {
           const data = await http.get("/cliente");
-          console.log(data);
           this.$emit("dadosCliente", data);
           return data;
         } catch (error) {

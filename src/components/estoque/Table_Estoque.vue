@@ -79,7 +79,6 @@ export default {
       try {
         const { data } = await http.get(`/movestoque/${idMovInventory}`);
         this.$emit("tableDataForStock", data);
-        console.log(data);
         return data;
       } catch (error) {
         console.log(error);
@@ -88,7 +87,6 @@ export default {
     async deleteMovInventory(idMovInventory) {
       try {
         const { data } = await http.delete(`/movestoque/${idMovInventory}`);
-        console.log(data);
         alert("Movimentação deletada com sucesso!");
         this.pesquisarTodasMovimentacoes();
         return data;
