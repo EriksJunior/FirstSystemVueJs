@@ -12,6 +12,7 @@
               <th scope="col">Valor Total</th>
               <th scope="col">Editar</th>
               <th scope="col">Excluir</th>
+              <th scope="col">Imprimir</th>
             </tr>
           </thead>
           <tbody>
@@ -42,6 +43,16 @@
                   variant="danger"
                 ></b-icon>
               </td>
+
+              <td>
+                <b-icon
+                  class="icones ml-3"
+                  icon="printer-fill"
+                  scale="2"
+                  variant="info"
+                  @click="abrirRelatorio"
+                ></b-icon>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -62,6 +73,7 @@ import { http } from "../../config/config";
 import moment from "moment";
 
 export default {
+  components: {},
   props: {},
   data() {
     return {
@@ -83,6 +95,13 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+    abrirRelatorio() {
+      window.open(
+        "relatPedidoVenda",
+        "popup",
+        "width=950, height=655, top=100, left=370"
+      );
     },
   },
   filters: {

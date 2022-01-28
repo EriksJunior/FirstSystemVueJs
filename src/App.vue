@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <Nav/>
+    <Nav />
     <router-view />
   </div>
 </template>
 
 <script>
-import Nav from '../src/components/nav/nav.vue'
+import Nav from "../src/components/nav/nav.vue";
 
 export default {
   name: "App",
