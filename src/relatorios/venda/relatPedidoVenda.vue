@@ -17,6 +17,12 @@
         </div>
         <div class="logoTipo mt-2 ml-5"></div>
       </div>
+
+      <div class="sectionProducts w-100 mt-5">
+        <div class="dataProdutcs d-flex justify-content-center">
+          <h3>Produtos</h3>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -30,6 +36,13 @@ export default {
 </script>
 
 <style scoped>
+.dataProdutcs {
+  width: 100%;
+  height: 200px;
+}
+.sectionProducts {
+  border: solid 2px black;
+}
 .logoTipo {
   width: 28%;
   border: solid 1px black;
