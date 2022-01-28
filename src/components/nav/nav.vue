@@ -1,5 +1,5 @@
 <template>
-  <div id="nav">
+  <div id="nav" v-if="this.$route.path != '/relatPedidoVenda'">
     <b-navbar type="dark" variant="dark">
       <b-navbar-nav>
         <b-nav-item to="/">Home</b-nav-item>

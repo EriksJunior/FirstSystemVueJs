@@ -40,7 +40,7 @@ export default {
 }
 #container {
   width: 100%;
-  height: 91.2vh;
+  height: 100vh;
 }
 
 #relatorioPedido {
