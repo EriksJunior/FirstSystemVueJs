@@ -5,6 +5,12 @@
 npm install
 ```
 
+##Base URL
+```
+src/config/config.js
+
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
