@@ -7,7 +7,7 @@ npm install
 
 ## Base URL
 ```
-src/config/config.js
+http://localhost:3333
 
 ```
 
